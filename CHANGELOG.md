@@ -6,6 +6,8 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 ## [Unreleased]
 
 ### Added
+- `workbench/user/skills/`: hai skill học từ lỗi thật, bản chuẩn có lịch sử (`dsh-plain-tool-definition`, `foreign-repo-quarantine`); cài vào `~/.dsh/skills/` để DSH tự nạp.
+- `docs/CAPABILITIES.md`: tool/script/môi trường đang thật sự có, mỗi dòng kèm lệnh kiểm, và danh sách "không có".
 - `docs/VERIFY.md`: bằng chứng bắt buộc theo loại thay đổi (docs / policy / row host / release / patch profile / port), lệnh chuẩn, khi nào gọi judge, mẫu mục `### Verified`, và những gì không được dùng làm bằng chứng.
 - Mục **Mức tự chủ (trust ladder)** trong `AGENTS.md`: bậc 0–4, điều kiện vào bậc, tự hạ bậc khi hỏng, và không có bậc 5.
 - `workbench/user/AGENTS.user.md`: bản chuẩn có lịch sử của `~/.dsh/AGENTS.md` — luật user-level cho mọi phiên DSH (tiếng Việt, an toàn, precedence, bảng "công cụ nào đọc file nào", learned-skills).

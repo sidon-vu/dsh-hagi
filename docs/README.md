@@ -7,6 +7,7 @@
 | [PORTING.md](PORTING.md) | Đang cân nhắc port/fork một plugin cộng đồng |
 | [RUNBOOKS.md](RUNBOOKS.md) | Cài máy mới, nâng cấp/rollback, DSH không boot |
 | [VERIFY.md](VERIFY.md) | Cần biết bằng chứng nào cho loại thay đổi nào |
+| [CAPABILITIES.md](CAPABILITIES.md) | Agent đang thật sự có tool/script/môi trường nào |
 | [LICENSE-POLICY.md](LICENSE-POLICY.md) | Trước khi copy code từ repo khác |
 | [../CHANGELOG.md](../CHANGELOG.md) | Lịch sử phát hành theo package |
 | [../AGENTS.md](../AGENTS.md) | Luật repo (đọc trước khi sửa gì) |

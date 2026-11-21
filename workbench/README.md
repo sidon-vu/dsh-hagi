@@ -10,8 +10,11 @@ workbench/
 │  ├─ _example/cordis.patch.yml   # mẫu, copy để tạo máy mới
 │  └─ <máy>/cordis.patch.yml      # patch thật của từng máy
 └─ user/
-   └─ AGENTS.user.md              # bản chuẩn của ~/.dsh/AGENTS.md (luật user-level)
+   ├─ AGENTS.user.md              # bản chuẩn của ~/.dsh/AGENTS.md (luật user-level)
+   └─ skills/<tên>/SKILL.md       # bản chuẩn của ~/.dsh/skills/<tên>/SKILL.md
 ```
+
+`user/skills/` là bản chuẩn **có lịch sử** của các skill học được: sửa ở đây rồi copy sang `~/.dsh/skills/`. DSH tự quét thư mục đó (root `user-dsh`, rank 400) nên skill mới hiện trong catalog của phiên; đặt trong repo thì không tự nạp, đúng ý.
 
 `user/AGENTS.user.md` là **bản chuẩn có lịch sử** của `~/.dsh/AGENTS.md`: sửa ở đây rồi copy ra `~/.dsh/AGENTS.md`. DSH nạp bản trong home cho mọi phiên; file trong repo chỉ để theo dõi thay đổi. Cố tình đặt tên `AGENTS.user.md` (không phải `AGENTS.md`) để DSH không nạp nhầm nó như chỉ dẫn của repo này.
 
