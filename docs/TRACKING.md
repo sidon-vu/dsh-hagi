@@ -9,7 +9,7 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 
 | Package | Nhóm | Version | Trạng thái | Reference chính |
 |---|---|---|---|---|
-| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.2.0 | 1 tính năng | `research/REFERENCES.md` |
+| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.3.0 | 2 tính năng | `research/REFERENCES.md` |
 | [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton | `research/REFERENCES.md` |
 | [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton | `research/REFERENCES.md` |
 
@@ -23,6 +23,7 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 |---|---|---|---|
 | `dev-hg-boot` | Row rỗng giữ bundle cài được | dropped (0.2.0) | đã thay bằng row thật |
 | `dev-hg-i18n-audit` | Tool `i18n_audit`: quét plugin đang cài — thiếu locale, thiếu `vi.json`, CJK cứng | done (0.2.0) | dùng cho chính quy trình port |
+| `dev-hg-guard` | Khoá mỗi tool call: đường dẫn bảo vệ, lệnh phá huỷ, secret — config-driven | done (0.3.0) | mặc định tắt, bật ở `workbench/profiles/<máy>/` |
 | `dev-hg-doctor` | So desired state (`workbench/profiles/*`) với máy: bundle thiếu, link gãy, version lệch | planned | thay script rời |
 | `dev-hg-snapshot` | Export/import profile (patch + bundle list), không kèm credentials | planned | |
 | `dev-hg-rollback` | Snapshot trước khi apply, rollback 1 nút | planned | sau snapshot |

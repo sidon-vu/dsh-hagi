@@ -33,6 +33,22 @@ dsh-config-manager@0.10.0   không có locale  71944      —
 dsh-context@0.86.0 (UI)     thiếu vi         1453       de,en,es,fr,ja,pt,ru,zh
 ```
 
+### `dev-hg-guard` — rules as code (0.3.0)
+
+Runs before every `write`, `edit`, `pwsh` and `bash` call and refuses the call with a reason: protected paths, history-destroying commands, secrets in file content or command lines. **Off by default** — a bundle that touches every tool call must be opted in.
+
+| Config | Default | Effect |
+|---|---|---|
+| `protectedPaths` | `.git/config`, `.git/hooks/**` | globs to block, appended to the defaults; entries may carry `allow` globs and a `why` |
+| `denyCommands` | `git push --force`, `git reset --hard` | regexes on shell commands, appended to the defaults |
+| `secretScan` | `true` | scan written content and commands for tokens / private keys |
+| `secretAllowPaths` | `[]` | globs where the secret scan is skipped |
+| `disableDefaults` | `false` | drop the built-in rules, keep only your config |
+
+Enable it for this workspace by copying the `dev-hg-guard` block from `workbench/profiles/_example/cordis.patch.yml` into your profile patch.
+
+Limits: it sees tool calls only (not nested shell), it cannot ask for confirmation, and it fails open on an internal error so a bug never blocks a whole session.
+
 Full status table and design notes: [docs/FEATURES.md](docs/FEATURES.md).
 
 Planned rows: `dev-hg-doctor` (desired state vs machine), `dev-hg-snapshot`, `dev-hg-rollback`.

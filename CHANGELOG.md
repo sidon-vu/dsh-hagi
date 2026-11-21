@@ -26,6 +26,31 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 - `dsh-session-hg`: `session-hg-context-panel`, `session-hg-archive`, `session-hg-rewind`
 - `dsh-ui-hg`: `ui-hg-statusbar`, `ui-hg-locale-switch`, `ui-hg-density`
 
+## dsh-dev-hg 0.3.0 — 2026-11-21
+
+Tag `dsh-dev-hg/v0.3.0`
+
+### Added
+- Row `dev-hg-guard` (mặc định **tắt**): khoá chạy trước mỗi `write`/`edit`/`pwsh`/`bash`, từ chối kèm lý do.
+- Config-driven: `protectedPaths` (+ `allow`/`why`), `denyCommands` (regex), `secretScan`, `secretAllowPaths`, `disableDefaults`. Config **cộng** vào luật mặc định.
+- Luật mặc định: `.git/config`, `.git/hooks/**`, `git push --force` (chừa `--force-with-lease`), `git reset --hard`, 6 mẫu secret (GitHub/AWS/Slack token, `sk-`, private key).
+- `test/guard.mjs`: 30+ assertion, gồm config rác, đường dẫn Windows `\`, fail-open.
+
+### Changed
+- `workbench/profiles/_example/cordis.patch.yml`: bật guard + khai luật riêng của workspace (`research/inbox/**` với 3 ngoại lệ, `dsh-hagi/index.json`, chặn `git tag -d`).
+- `scripts.test` chạy cả hai bộ test.
+
+### Verified
+- `node test/guard.mjs` và `node test/smoke.mjs` pass.
+- Test bắt được 2 lỗi thật trước khi phát hành: `--force-with-lease` bị chặn nhầm (sửa regex), và so khớp hỏng với `\` của Windows (chuẩn hoá đường dẫn).
+- `pnpm verify:release` cài bản 0.3.0 từ GitHub, resolve 2 row, `guards=1`.
+
+### Known limits
+- Chỉ thấy tool call; không thấy shell lồng nhau, không chặn được người dùng tự gõ lệnh.
+- Không "hỏi trước" — chỉ cho qua hoặc từ chối.
+- Fail-open khi lỗi nội bộ (có `console.warn`).
+- Chưa chạy trong phiên DSH thật: guard mặc định tắt nên phải bật bằng patch mới thấy tác dụng.
+
 ## dsh-dev-hg 0.2.0 — 2026-11-21
 
 Tag `dsh-dev-hg/v0.2.0` · commit `8a21a1b`

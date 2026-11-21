@@ -6,6 +6,13 @@
     - id: dev-hg-i18n-audit
       name: './src/tool.js'
 
+    # Khoá chạy mỗi tool call: chặn đường dẫn bảo vệ, lệnh phá huỷ, secret.
+    # Mặc định TẮT trong package vì nó ảnh hưởng mọi lời gọi tool — bật ở
+    # workbench/profiles/<máy>/cordis.patch.yml (kèm config riêng của máy).
+    - id: dev-hg-guard
+      name: './src/guard.js'
+      disabled: true
+
     # --- thêm tính năng mới theo mẫu ---
     # - id: dev-hg-<tên-tính-năng>
     #   name: './src/<file>.js'

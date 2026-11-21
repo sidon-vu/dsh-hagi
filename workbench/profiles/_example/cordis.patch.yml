@@ -1,16 +1,33 @@
 # Patch mẫu cho một máy. Copy thành workbench/profiles/<máy>/cordis.patch.yml
 # rồi chép nội dung vào ~/.dsh/profiles/<profile>/cordis.patch.yml (thêm ở cuối file).
 
-# 1) Marketplace của chính repo này (index của marketplace)
+# 1) Marketplace của chính repo này
 - id: plugin-market
   config:
     indexes:
       - https://raw.githubusercontent.com/sidon-vu/dsh-hagi/main/index.json
 
-# 2) Tính năng bật/tắt theo máy
-#    Row id lấy từ docs/TRACKING.md. disabled: true = tắt, null = theo mặc định package.
+# 2) Khoá guard: bật + khai luật riêng của workspace này.
+#    `config` thay thế wholesale → mỗi máy phải ghi đủ field nó cần.
+#    Luật mặc định trong code vẫn chạy (trừ khi disableDefaults: true).
+- id: dev-hg-guard
+  disabled: null
+  config:
+    protectedPaths:
+      - pattern: 'research/inbox/**'
+        allow:
+          - 'research/inbox/**/_quarantine/**'
+          - 'research/inbox/**/ANALYSIS.md'
+          - 'research/inbox/**/NOTICE.md'
+        why: 'research/inbox là bằng chứng read-only'
+      - pattern: 'dsh-hagi/index.json'
+        why: 'index.json chỉ do scripts/build-index.mjs ghi'
+    denyCommands:
+      # xoá tag làm index trỏ vào commit không còn — cài đặt của máy khác gãy
+      - pattern: 'git\s+tag\s+-d\b'
+        why: 'tag đã phát hành là hợp đồng với index.json'
 
-# máy chính: bật hết dev tool
+# 3) Tính năng bật/tắt theo máy (row id lấy từ docs/TRACKING.md)
 - id: dev-hg-doctor
   disabled: null
 
@@ -18,7 +35,7 @@
 - id: ui-hg-density
   disabled: true
 
-# 3) Đổi config: phải restate TOÀN BỘ field của row (không deep-merge)
+# 4) Đổi config: phải restate TOÀN BỘ field của row (không deep-merge)
 # - id: dev-hg-doctor
 #   config:
 #     checkIntervalMinutes: 30
