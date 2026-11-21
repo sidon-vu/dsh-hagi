@@ -19,6 +19,7 @@ Repo tham khảo (clone được) thì không lưu ở đây — dùng `research
 
 | Ngày | File | Chủ đề | Đã áp dụng ở |
 |---|---|---|---|
+| 2026-11-21 | [2026-11-21-cpjet64-vibecoding.md](2026-11-21-cpjet64-vibecoding.md) | repo 16 guide "vibecoding" (license:none) | RUNBOOKS, CHANGELOG, DoD, PORTING, cách ly repo lạ |
 | 2026-11-21 | [2026-11-21-six-files-vibecoding.md](2026-11-21-six-files-vibecoding.md) | 6 file trước khi "vibe coding" | ARCHITECTURE, DESIGN, cột Done when, từ chối 4 file trùng |
 | 2026-11-21 | [2026-11-21-pstack-lauren-tan.md](2026-11-21-pstack-lauren-tan.md) | software-factory / pstack (Lauren Tan) | trust ladder, VERIFY, skills-from-mistakes, CAPABILITIES |
 | 2026-11-21 | [2026-11-21-stale-rules-audit.md](2026-11-21-stale-rules-audit.md) | audit luật cũ + hook enforcement | audit 12 luật, sửa 4 luật lệch, `dev-hg-guard` |
