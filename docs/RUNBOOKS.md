@@ -23,7 +23,7 @@ Chỉ ghi bước **kiểm được**; bước suy đoán phải đánh dấu `(
 
 1. Cài DSH: Desktop app, hoặc `npx @deepseek-ai/dsh web` (mở ở `127.0.0.1:3080`). Kiểm: app mở được, phiên mới chat được.
 2. Xác nhận version: `dsh --version` (hoặc xem About trong app). Khớp với `engines.dsh` bạn sẽ cài (`>=0.2.2-rc.5 <0.3.0`).
-3. **Luật user-level:** copy `workbench/user/AGENTS.user.md` → `~/.dsh/AGENTS.md`. DSH nạp file này cho **mọi** phiên trên máy; không có nó thì luật cá nhân (ngôn ngữ, an toàn, learned-skills) không được áp dụng.
+3. **Luật user-level:** copy `workbench/user/AGENTS.user.md` → `~/.dsh/AGENTS.md`. DSH nạp file này cho **mọi** phiên trên máy; không có nó thì luật cá nhân (ngôn ngữ, an toàn, chỗ lưu skill tự học) không được áp dụng.
 4. **Plugins → Discover → Add index source** → `https://raw.githubusercontent.com/sidon-vu/dsh-hagi/main/index.json`. Kiểm: thấy `hg · Dev & Ops`.
 5. Cài `hg · Dev & Ops` (và các package cần). Kiểm: tab **Installed** có bundle, trạng thái **Installed**.
 6. Mở **session mới**, nhờ agent gọi `i18n_audit` — có kết quả là tool đã đăng ký.

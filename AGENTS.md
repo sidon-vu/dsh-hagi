@@ -2,6 +2,8 @@
 
 Repo này là marketplace + code plugin. Luật gốc của workspace nằm ở `AGENTS.md` của thư mục workbench (ngoài repo) — file này chỉ nói phần riêng của repo.
 
+**Trước khi sửa:** đọc [HANDOFF.md](HANDOFF.md) — biết version đang phát hành, việc kế tiếp, nợ kỹ thuật. Cập nhật nó khi release hoặc khi để lại việc dở.
+
 ## Việc thuộc repo này
 
 - `packages/` — code plugin (package = 1 nhóm chủ đề, row = 1 tính năng).

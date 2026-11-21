@@ -33,13 +33,9 @@ Mỗi công cụ AI đọc một file khác nhau — đừng chép nội dung gi
 
 Bản chuẩn của file này nằm trong repo: `dsh-hagi/workbench/user/AGENTS.user.md` — sửa ở đó rồi copy ra, để có lịch sử.
 
-## Learned skills
+## Skill tự học
 
-Protocol gốc nằm trong `~/.claude/CLAUDE.md` (mục `hagi-learned-skills`, do `install_agent_rules.py` sinh) — DSH không tự đọc file đó. Khi bắt đầu làm việc trong một project:
-
-1. Đọc mục đó để lấy quy ước.
-2. Xem `D:\AI\hagi-agent-plugins\learned\<project>\` và đọc `SKILL.md` nào có `description` khớp việc đang làm.
-3. Học được gì đáng nhớ → lưu thành skill trong thư mục đó (không lưu vào repo project), rồi commit/push trong repo learned ấy.
+Skill học được (một lỗi/workflow lặp ≥ 2 lần) lưu ở `~/.dsh/skills/<tên>/SKILL.md` — DSH tự nạp thư mục này vào catalog của phiên. Trước khi làm lại việc đã từng gặp, xem catalog và đọc skill tương ứng. Không lưu skill vào repo project.
 
 ## Tạo skill
 
