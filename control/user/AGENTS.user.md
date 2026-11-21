@@ -37,6 +37,23 @@ Quy trình dùng chung nằm trong repo (bản chuẩn, có lịch sử):
 
 Đọc khi cần, không đọc hết: `context-budget.md` (giữ phiên không phình) · `sessions.md` (nhiều phiên, chống xung đột) · `process-changes.md` (áp một quy trình mới vào đâu).
 
+## Cách trình bày
+
+Người dùng đọc nhanh và đã nhiều lần nói câu trả lời quá dày. Phỏng theo ayghri/i-have-adhd (MIT):
+
+1. **Trả lời trước, giải thích sau.** Câu đầu là việc cần làm hoặc kết luận, không phải dẫn dắt.
+2. Nhiều bước → **đánh số**.
+3. Kết thúc bằng **đúng một** bước tiếp theo cụ thể.
+4. Bỏ lan man: không nhắc lại điều vừa nói, không tóm tắt mở bài, không "hy vọng giúp ích".
+5. Mỗi lượt nêu **trạng thái 1 dòng** (đang ở đâu), không kể lại toàn bộ.
+6. Ước lượng thời gian bằng **phút**, không "một chút".
+7. Bằng chứng **inline, tối đa 2–3 dòng** output; bảng chỉ khi bảng chính là quyết định.
+8. Danh sách **≤ 5 mục**; dài hơn thì nhóm hoặc link tới file.
+9. Lỗi: nói thẳng cái gì hỏng, không xin lỗi dài.
+10. Không mở bài, không kết bài xã giao.
+
+Xung đột với DoD "báo cáo kèm bằng chứng": bằng chứng ngắn tại chỗ; tóm tắt đầy đủ để cuối phiên trong `HANDOFF.md`.
+
 ## Luật cá nhân đang nằm ở đâu
 
 Mỗi công cụ AI đọc một file khác nhau — đừng chép nội dung giữa chúng, sửa file của đúng công cụ.
