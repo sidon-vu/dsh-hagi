@@ -14,4 +14,4 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 
 - Client entry (`dsh.client` + `client.js`) tạo cùng row UI đầu tiên; DESIGN.md đã có luật trước để không phải sửa lại.
 - **Một tính năng = một row.** Không gộp, không dùng `config.features.*`.
-- Row thử nghiệm: `disabled: true` trong patch package, bật theo máy ở `workbench/profiles/<máy>/`.
+- Row thử nghiệm: `disabled: true` trong patch package, bật theo máy ở `control/profiles/<máy>/`.

@@ -31,4 +31,4 @@ bump version → [CHANGELOG](CHANGELOG.md) → **commit code** → `git tag <pkg
 
 ## Chỗ hay gãy
 
-[ARCHITECTURE](docs/ARCHITECTURE.md) mục "Năm chỗ hay gãy" · [RUNBOOKS](docs/RUNBOOKS.md) khi có sự cố · [VERIFY](docs/VERIFY.md) khi cần biết phải chứng minh gì · [workbench/rules/](workbench/rules/README.md) quy trình dùng chung.
+[ARCHITECTURE](docs/ARCHITECTURE.md) mục "Năm chỗ hay gãy" · [RUNBOOKS](docs/RUNBOOKS.md) khi có sự cố · [VERIFY](docs/VERIFY.md) khi cần biết phải chứng minh gì · [control/rules/](control/rules/README.md) quy trình dùng chung.

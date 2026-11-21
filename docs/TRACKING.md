@@ -25,8 +25,8 @@ Danh sách plugin theo chủ đề (kèm mục đích từng cái): [../PLUGINS.
 |---|---|---|---|
 | `dev-hg-boot` | Row rỗng giữ bundle cài được | dropped (0.2.0) | đã thay bằng row thật |
 | `dev-hg-i18n-audit` | Tool `i18n_audit`: quét plugin đang cài — thiếu locale, thiếu `vi.json`, CJK cứng | done (0.2.0) | dùng cho chính quy trình port |
-| `dev-hg-guard` | Khoá mỗi tool call: đường dẫn bảo vệ, lệnh phá huỷ, secret — config-driven | done (0.3.0) | mặc định tắt, bật ở `workbench/profiles/<máy>/` |
-| `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`workbench/profiles/*`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | thay script rời |
+| `dev-hg-guard` | Khoá mỗi tool call: đường dẫn bảo vệ, lệnh phá huỷ, secret — config-driven | done (0.3.0) | mặc định tắt, bật ở `control/profiles/<máy>/` |
+| `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`control/profiles/*`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | thay script rời |
 | `dev-hg-snapshot` | Tool `profile_snapshot`: export/import profile (patch + bundle list), không kèm credentials | done (0.5.0) | manifest không chứa secret; import dry-run mặc định |
 | `dev-hg-rollback` | Snapshot trước khi apply, rollback 1 nút | planned | sau snapshot |
 

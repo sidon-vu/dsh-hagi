@@ -41,7 +41,7 @@ dsh-hagi/
 ├─ scripts/build-index.mjs    # regenerate + validate the catalog
 ├─ packages/                  # one directory per bundle package
 ├─ docs/                      # tracking, porting, license policy
-└─ workbench/profiles/        # per-machine feature switches (cordis patches)
+└─ control/profiles/        # per-machine feature switches (cordis patches)
 ```
 
 ## Release a package

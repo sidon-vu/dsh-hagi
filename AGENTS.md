@@ -15,13 +15,13 @@ Repo này là marketplace + code plugin. Luật gốc của workspace nằm ở 
 - Mở phiên ở repo: đọc [PLUGINS.md](PLUGINS.md) để biết có plugin nào, giai đoạn nào, rồi đi tiếp vào package.
 - Làm một plugin: đọc `packages/<pkg>/AGENTS.md` của **đúng** plugin đó. Không sửa package khác trong cùng phiên.
 - Một phiên = một plugin. File dùng chung (`HANDOFF.md`, `CHANGELOG.md`, `index.json`, `docs/TRACKING.md`) chỉ sửa lúc kết phiên/release và **commit ngay**.
-- Vùng sở hữu và cách xử lý khi sắp xung đột: [workbench/rules/sessions.md](workbench/rules/sessions.md).
+- Vùng sở hữu và cách xử lý khi sắp xung đột: [control/rules/sessions.md](control/rules/sessions.md).
 
 ## Việc thuộc repo này
 
 - `packages/` — code plugin (package = 1 nhóm chủ đề, row = 1 tính năng).
 - `index.json` — sinh bằng script, commit cùng mỗi lần release.
-- `workbench/profiles/` — patch bật/tắt tính năng theo từng máy (có lịch sử).
+- `control/profiles/` — patch bật/tắt tính năng theo từng máy (có lịch sử).
 - `docs/` — tracking, quy trình port, chính sách license.
 
 ## Không thuộc repo này

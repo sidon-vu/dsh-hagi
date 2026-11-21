@@ -14,5 +14,5 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 
 - **Một tính năng = một row.** Không gộp, không dùng `config.features.*`.
 - Trạng thái phiên lấy từ projection/wire của host; không fold event ở client, không poll `agent/status`.
-- Row thử nghiệm: `disabled: true` trong patch package, bật theo máy ở `workbench/profiles/<máy>/`.
+- Row thử nghiệm: `disabled: true` trong patch package, bật theo máy ở `control/profiles/<máy>/`.
 - Chuỗi hiển thị: `locale/en.json` + `locale/vi.json` cùng lúc.

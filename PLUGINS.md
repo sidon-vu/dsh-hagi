@@ -19,5 +19,5 @@ Hiện **1 plugin = 1 package**. Muốn một plugin có nhiều package: thêm 
 | Trạng thái toàn repo (version, nợ, việc kế) | [HANDOFF.md](HANDOFF.md) |
 | Row nào đang ở trạng thái nào | [docs/TRACKING.md](docs/TRACKING.md) |
 | Quy ước code/row/release | [AGENTS.md](AGENTS.md) |
-| Quy trình dùng chung (context, phiên, áp quy trình) | [workbench/rules/README.md](workbench/rules/README.md) |
+| Quy trình dùng chung (context, phiên, áp quy trình) | [control/rules/README.md](control/rules/README.md) |
 | Mô tả công khai cho người dùng | [README.md](README.md) |

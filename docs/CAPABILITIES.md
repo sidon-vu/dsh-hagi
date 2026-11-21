@@ -35,7 +35,7 @@ Mỗi dòng ghi **cách kiểm**. Không kiểm được thì đừng tin dòng 
 | DSH chính | profile `desktop` (Electron quản lý) | `echo $env:DSH_PROFILE` trong phiên |
 | Lab | `~/.dsh/profiles/lab` (CLI), cài `dsh-dev-hg` bằng `link:` | `dsh --profile lab --no-open --port 0` → dòng `dsh web: http://…` |
 | Nháp | `scratch/` | xoá được bất cứ lúc nào |
-| Skill học được | `~/.dsh/skills/` (bản chuẩn trong `dsh-hagi/workbench/user/skills/`) | skill hiện trong catalog phiên |
+| Skill học được | `~/.dsh/skills/` (bản chuẩn trong `dsh-hagi/control/user/skills/`) | skill hiện trong catalog phiên |
 | Luật user-level | `~/.dsh/AGENTS.md` | phiên hiện `Instructions from: ~/.dsh/AGENTS.md` |
 
 ## Không có (đừng hứa)

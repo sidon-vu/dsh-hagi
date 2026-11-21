@@ -1,4 +1,4 @@
-# Patch mẫu cho một máy. Copy thành workbench/profiles/<máy>/cordis.patch.yml
+# Patch mẫu cho một máy. Copy thành control/profiles/<máy>/cordis.patch.yml
 # rồi chép nội dung vào ~/.dsh/profiles/<profile>/cordis.patch.yml (thêm ở cuối file).
 
 # 1) Marketplace của chính repo này

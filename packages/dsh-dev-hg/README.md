@@ -45,7 +45,7 @@ Runs before every `write`, `edit`, `pwsh` and `bash` call and refuses the call w
 | `secretAllowPaths` | `[]` | globs where the secret scan is skipped |
 | `disableDefaults` | `false` | drop the built-in rules, keep only your config |
 
-Enable it for this workspace by copying the `dev-hg-guard` block from `workbench/profiles/_example/cordis.patch.yml` into your profile patch.
+Enable it for this workspace by copying the `dev-hg-guard` block from `control/profiles/_example/cordis.patch.yml` into your profile patch.
 
 Limits: it sees tool calls only (not nested shell), it cannot ask for confirmation, and it fails open on an internal error so a bug never blocks a whole session.
 
@@ -58,11 +58,11 @@ A read-only agent tool. It compares a profile with the patch that machine is sup
 - rows the profile patch keeps **disabled although the desired patch enables them**, rows nothing declares any more,
 - optionally, live rows no patch on the machine mentions.
 
-Parameters: `profile` (default: the running profile), `desired` (path to `workbench/profiles/<machine>/cordis.patch.yml`), `includeUndeclared`, `limit` (1–200, default 50).
+Parameters: `profile` (default: the running profile), `desired` (path to `control/profiles/<machine>/cordis.patch.yml`), `includeUndeclared`, `limit` (1–200, default 50).
 
 ```text
 Lệch trạng thái — C:\Users\me\.dsh\profiles\lab
-desired: workbench/profiles/wHAGI/cordis.patch.yml
+desired: control/profiles/wHAGI/cordis.patch.yml
 3 bundle khai · 4 row mong muốn · 2 lệch
 
 [row-unknown] dev-hg-guard — không patch nào trên máy khai row này

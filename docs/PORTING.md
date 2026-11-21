@@ -31,7 +31,7 @@ Code ta viết mới trong `packages/<pkg>/src/`, tên file theo tính năng, kh
 - Một tính năng = một row, id `<nhóm>-hg-<tính năng>`.
 - **Slice đầu tiên phải cài được và dùng được end-to-end** (dù chỉ một tính năng nhỏ) trước khi thêm tính năng thứ hai. Đừng gom 5 tính năng rồi mới thử.
 - `config` phẳng, nhỏ; mọi field đều có default trong code, vì patch máy khác thay thế wholesale.
-- Nếu tính năng cần bật/tắt theo máy → để mặc định trong patch package, override trong `workbench/profiles/<máy>/cordis.patch.yml`.
+- Nếu tính năng cần bật/tắt theo máy → để mặc định trong patch package, override trong `control/profiles/<máy>/cordis.patch.yml`.
 
 ## Bước 4 — i18n
 

@@ -8,13 +8,13 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 Tag `dsh-dev-hg/v0.4.0`
 
 ### Added
-- Row `dev-hg-doctor` + tool `profile_doctor`: so trạng thái mong muốn của máy (patch trong `workbench/profiles/<máy>/`) với trạng thái thật — `link:`/`file:` gãy, dependency khai mà không dùng được, bundle DSH từ chối, version lệch, row bị tắt nhầm, row không còn ai khai. Chỉ đọc.
+- Row `dev-hg-doctor` + tool `profile_doctor`: so trạng thái mong muốn của máy (patch trong `control/profiles/<máy>/`) với trạng thái thật — `link:`/`file:` gãy, dependency khai mà không dùng được, bundle DSH từ chối, version lệch, row bị tắt nhầm, row không còn ai khai. Chỉ đọc.
 - `src/doctor.js` (logic thuần), `src/doctor-tool.js` (entry + tool), `test/doctor.mjs` (30+ assertion, mỗi loại lệch một ca).
 - Dùng `ctx.pluginManager.listBundles()` khi có (`availability`, `error`, `entryId`) nhưng **không** đưa vào `inject`: thiếu service thì row vẫn activate và lùi về đọc đĩa.
 
 ### Verified
 - `node test/doctor.mjs` pass (`ok: doctor — 30+ assertion, tất cả pass`); `test/smoke.mjs`, `test/guard.mjs` vẫn pass.
-- Chạy trên máy thật (profile `desktop`, `desired` = `workbench/profiles/_example/cordis.patch.yml`): 2 lệch đúng — `row-unknown` cho `dev-hg-guard`, `dev-hg-doctor` (bản cài trên desktop còn 0.1.0, không khai hai row này).
+- Chạy trên máy thật (profile `desktop`, `desired` = `control/profiles/_example/cordis.patch.yml`): 2 lệch đúng — `row-unknown` cho `dev-hg-guard`, `dev-hg-doctor` (bản cài trên desktop còn 0.1.0, không khai hai row này).
 - `pnpm check:docs` pass; `dsh --profile lab --dump-config` ghép row `dev-hg-doctor` trỏ `src/doctor-tool.js`.
 - Boot `lab`: có URL, **0** `did not activate`.
 - `verify:release`: 3/3 package cài từ GitHub ok.
@@ -47,18 +47,21 @@ Tag `dsh-dev-hg/v0.5.0`
 
 ## [Unreleased]
 
+### Changed
+- Đổi tên `workbench/` → `control/` (trong repo) vì trùng tên với thư mục làm việc `dsh-workbench/`. Không đổi nội dung, chỉ đổi đường dẫn; 21 file được cập nhật tham chiếu, `control/README.md` giải thích rõ hai thư mục.
+
 ### Added
 - `PLUGINS.md`: danh sách plugin theo chủ đề, mục đích, package, giai đoạn — tầng "biết có gì" trước khi vào chi tiết.
 - `packages/<pkg>/AGENTS.md` cho cả 3 package: giai đoạn, row, việc kế tiếp, chặn, luật riêng. Không nằm trong `files` nên không phát hành.
-- `workbench/rules/`: quy trình dùng chung có lịch sử — `context-budget.md`, `sessions.md` (vùng sở hữu + chống xung đột), `process-changes.md` (cách áp một quy trình mới).
+- `control/rules/`: quy trình dùng chung có lịch sử — `context-budget.md`, `sessions.md` (vùng sở hữu + chống xung đột), `process-changes.md` (cách áp một quy trình mới).
 - Mục "Phiên theo plugin (chống xung đột)" trong `AGENTS.md`; cột **Giai đoạn** trong `docs/TRACKING.md`.
-- Mục **Ngân sách context** trong luật user-level (`workbench/user/AGENTS.user.md`) và trong `AGENTS.md` của repo: đọc `read` thay `Get-Content`, không grep trong `app.asar`, chia việc > ~15 tool call.
+- Mục **Ngân sách context** trong luật user-level (`control/user/AGENTS.user.md`) và trong `AGENTS.md` của repo: đọc `read` thay `Get-Content`, không grep trong `app.asar`, chia việc > ~15 tool call.
 - `HANDOFF.md` (repo): version đang phát hành, việc kế tiếp, nợ kỹ thuật, nhịp release — để phiên mới biết dừng ở đâu mà không cần đọc lại hội thoại cũ.
-- `workbench/user/skills/`: hai skill học từ lỗi thật, bản chuẩn có lịch sử (`dsh-plain-tool-definition`, `foreign-repo-quarantine`); cài vào `~/.dsh/skills/` để DSH tự nạp.
+- `control/user/skills/`: hai skill học từ lỗi thật, bản chuẩn có lịch sử (`dsh-plain-tool-definition`, `foreign-repo-quarantine`); cài vào `~/.dsh/skills/` để DSH tự nạp.
 - `docs/CAPABILITIES.md`: tool/script/môi trường đang thật sự có, mỗi dòng kèm lệnh kiểm, và danh sách "không có".
 - `docs/VERIFY.md`: bằng chứng bắt buộc theo loại thay đổi (docs / policy / row host / release / patch profile / port), lệnh chuẩn, khi nào gọi judge, mẫu mục `### Verified`, và những gì không được dùng làm bằng chứng.
 - Mục **Mức tự chủ (trust ladder)** trong `AGENTS.md`: bậc 0–4, điều kiện vào bậc, tự hạ bậc khi hỏng, và không có bậc 5.
-- `workbench/user/AGENTS.user.md`: bản chuẩn có lịch sử của `~/.dsh/AGENTS.md` — luật user-level cho mọi phiên DSH (tiếng Việt, an toàn, precedence, bảng "công cụ nào đọc file nào", chỗ lưu skill tự học).
+- `control/user/AGENTS.user.md`: bản chuẩn có lịch sử của `~/.dsh/AGENTS.md` — luật user-level cho mọi phiên DSH (tiếng Việt, an toàn, precedence, bảng "công cụ nào đọc file nào", chỗ lưu skill tự học).
 - RB-1 bước 3: máy mới phải copy file user-level trước khi dùng.
 - `scripts/check-docs.mjs` (`pnpm check:docs`): mọi `.md` ≤ 200 dòng, link tương đối không gãy.
 - `scripts/verify-release.mjs` (`pnpm verify:release`): cài từng plugin trong `index.json` từ GitHub vào thư mục tạm, kiểm file, resolve row, gọi `apply()`.
@@ -104,7 +107,7 @@ Tag `dsh-dev-hg/v0.3.0`
 - `test/guard.mjs`: 30+ assertion, gồm config rác, đường dẫn Windows `\`, fail-open.
 
 ### Changed
-- `workbench/profiles/_example/cordis.patch.yml`: bật guard + khai luật riêng của workspace (`research/inbox/**` với 3 ngoại lệ, `dsh-hagi/index.json`, chặn `git tag -d`).
+- `control/profiles/_example/cordis.patch.yml`: bật guard + khai luật riêng của workspace (`research/inbox/**` với 3 ngoại lệ, `dsh-hagi/index.json`, chặn `git tag -d`).
 - `scripts.test` chạy cả hai bộ test.
 
 ### Verified
@@ -156,4 +159,4 @@ Tag `dsh-ui-hg/v0.1.0` · commit `4e2c6fd`
 ## Repo 0.1.0 — 2026-11-21
 
 ### Added
-- `index.json` format 1 (3 bundle, validate bằng `parseMarketIndex`), `scripts/build-index.mjs`, `docs/TRACKING.md`, `docs/PORTING.md`, `docs/LICENSE-POLICY.md`, `workbench/profiles/_example/`.
+- `index.json` format 1 (3 bundle, validate bằng `parseMarketIndex`), `scripts/build-index.mjs`, `docs/TRACKING.md`, `docs/PORTING.md`, `docs/LICENSE-POLICY.md`, `control/profiles/_example/`.

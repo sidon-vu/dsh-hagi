@@ -33,7 +33,7 @@ Phiên dài đắt hơn nhiều so với việc đọc thêm một file ngắn �
 ## Bản đồ quy trình
 
 Quy trình dùng chung nằm trong repo (bản chuẩn, có lịch sử):
-`D:\DEV\dsh-workbench\dsh-hagi\workbench\rules\README.md`
+`D:\DEV\dsh-workbench\dsh-hagi\control\rules\README.md`
 
 Đọc khi cần, không đọc hết: `context-budget.md` (giữ phiên không phình) · `sessions.md` (nhiều phiên, chống xung đột) · `process-changes.md` (áp một quy trình mới vào đâu).
 
@@ -48,7 +48,7 @@ Mỗi công cụ AI đọc một file khác nhau — đừng chép nội dung gi
 | Codex | `~/.codex/AGENTS.md` |
 | Gemini | `~/.gemini/GEMINI.md` |
 
-Bản chuẩn của file này nằm trong repo: `dsh-hagi/workbench/user/AGENTS.user.md` — sửa ở đó rồi copy ra, để có lịch sử.
+Bản chuẩn của file này nằm trong repo: `dsh-hagi/control/user/AGENTS.user.md` — sửa ở đó rồi copy ra, để có lịch sử.
 
 ## Skill tự học
 

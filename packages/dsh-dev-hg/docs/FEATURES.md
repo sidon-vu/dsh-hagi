@@ -8,7 +8,7 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 | `dev-hg-i18n-audit` | Tool `i18n_audit`: quét plugin đã cài — thiếu `locale/`, thiếu `vi.json`, CJK cứng, CJK trong README | done (0.2.0) | Tool hiện trong phiên mới; quét profile thật ra ≥1 plugin; output đúng schema; `node test/smoke.mjs` pass | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
 | `dev-hg-guard` | Khoá mỗi tool call: chặn đường dẫn bảo vệ, lệnh phá huỷ, secret trong nội dung/lệnh | done (0.3.0) | `node test/guard.mjs` pass; bật bằng patch máy thì câu ghi vào `research/inbox` bị từ chối kèm lý do | **Mặc định tắt** trong package: ảnh hưởng mọi lời gọi tool |
 | `dev-hg-boot` | Row rỗng giữ bundle cài được | dropped (0.2.0) | — | Xoá khi có tính năng thật |
-| `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`workbench/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | `node test/doctor.mjs` pass; chạy trên profile thật báo đúng lệch đã biết; `verify:release` + boot `lab` sạch; không ghi file | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
+| `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`control/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | `node test/doctor.mjs` pass; chạy trên profile thật báo đúng lệch đã biết; `verify:release` + boot `lab` sạch; không ghi file | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
 | `dev-hg-snapshot` | Tool `profile_snapshot`: export/import profile (patch + bundle list), không kèm credentials | done (0.5.0) | `node test/snapshot.mjs` pass; export → xoá patch → import → file quay lại; manifest serialise không chứa `ghp_`/`sk-`; `verify:release` + boot `lab` sạch | Bật mặc định: export chỉ đọc, import bắt buộc `confirm` |
 | `dev-hg-rollback` | Snapshot trước khi apply, rollback một bước | planned | Apply thay đổi → rollback → trạng thái cũ; có test | Phụ thuộc snapshot |
 
@@ -44,7 +44,7 @@ Tool name: `profile_doctor`. Chỉ đọc: **không ghi file, không sửa patch
 | Tham số | Kiểu | Việc |
 |---|---|---|
 | `profile` | string tuỳ chọn | Thư mục profile cần soi; mặc định `DSH_PROFILE_DIR` |
-| `desired` | string tuỳ chọn | Patch mong muốn (`workbench/profiles/<máy>/cordis.patch.yml`); không có thì chỉ kiểm cấu trúc |
+| `desired` | string tuỳ chọn | Patch mong muốn (`control/profiles/<máy>/cordis.patch.yml`); không có thì chỉ kiểm cấu trúc |
 | `includeUndeclared` | boolean tuỳ chọn | Kể cả row đang sống mà không patch máy nào khai (ồn hơn) |
 | `limit` | integer 1–200, mặc định 50 | Cắt số finding, lệch trước thông tin |
 
