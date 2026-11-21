@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "hg · Machines",
+    "description": "Pair DSH instances over SSH/Tailscale, pick an always-on host, dispatch and resume agent sessions across machines."
+  }
+}

@@ -20,7 +20,7 @@ const isWorkspace = (dir) =>
   fs.existsSync(path.join(dir, 'AGENTS.md')) && fs.existsSync(path.join(dir, 'dsh-hagi', 'package.json'))
 const ROOT = isWorkspace(path.resolve(REPO, '..')) ? path.resolve(REPO, '..') : REPO
 
-const SKIP_DIRS = new Set(['.git', 'node_modules', 'inbox', 'scratch', 'dist', 'coverage', '.turbo', '.pnpm'])
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'inbox', 'scratch', 'dist', 'coverage', '.turbo', '.pnpm', 'research'])
 
 const walk = (dir, files = []) => {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

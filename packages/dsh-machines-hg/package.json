@@ -1,0 +1,48 @@
+{
+  "name": "dsh-machines-hg",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multi-machine fleet for DeepSeek Harness: pair DSH instances over SSH/Tailscale, pick one as the always-on agent host, dispatch and resume sessions across machines.",
+  "type": "module",
+  "license": "MIT",
+  "author": "HaGizen",
+  "exports": {
+    ".": "./index.js",
+    "./icon": "./icon.svg",
+    "./locale/*.json": "./locale/*.json",
+    "./src/*": "./src/*"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "src",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md"
+  ],
+  "engines": {
+    "dsh": ">=0.2.2-rc.5 <0.3.0"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml",
+      "listedByDefault": false
+    },
+    "market": {
+      "category": "integration",
+      "keywords": [
+        "dsh",
+        "machines",
+        "fleet",
+        "ssh",
+        "tailscale",
+        "remote",
+        "orchestration",
+        "multi-device"
+      ],
+      "labels": []
+    }
+  }
+}

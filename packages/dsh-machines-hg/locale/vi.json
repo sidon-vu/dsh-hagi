@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "hg · Machines",
+    "description": "Ghép đôi các instance DSH qua SSH/Tailscale, chọn một máy always-on, điều phối và tiếp tục session agent giữa các máy."
+  }
+}

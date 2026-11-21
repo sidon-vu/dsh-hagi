@@ -7,6 +7,7 @@ Tầng "biết có những gì". Chi tiết thì đi theo cột **Package**, kh�
 | hg · Dev & Ops | công cụ phát triển/vận hành: audit i18n, khoá an toàn, chẩn đoán profile, snapshot/rollback | [dsh-dev-hg 0.6.0](packages/dsh-dev-hg/AGENTS.md) | **released** (5 row) |
 | hg · Session & Context | công cụ phiên làm việc: xem context, archive, rewind | [dsh-session-hg 0.1.0](packages/dsh-session-hg/AGENTS.md) | skeleton — **đang làm tiếp** (`session-hg-context-panel`) |
 | hg · UI & Experience | status bar đa máy, chuyển EN/VI, mật độ hiển thị | [dsh-ui-hg 0.1.0](packages/dsh-ui-hg/AGENTS.md) | skeleton |
+| hg · Machines | pair nhiều máy qua SSH/Tailscale, chọn host always-on, dispatch + resume session giữa các máy | [dsh-machines-hg 0.1.0](packages/dsh-machines-hg/AGENTS.md) | skeleton |
 
 Giai đoạn: `spec` → `skeleton` (bundle cài được, chưa có row thật) → `coding` → `verify` → `released`.
 

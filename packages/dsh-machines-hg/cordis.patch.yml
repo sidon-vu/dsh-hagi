@@ -1,0 +1,39 @@
+# Mỗi item dưới đây là MỘT row = MỘT tính năng. Row id là hợp đồng vĩnh viễn:
+# mọi patch máy (control/profiles/<máy>/) trỏ vào id, nên không đổi tên.
+- insert:
+    # --- skeleton: row rỗng để bundle cài được và hiện trong Plugins ---
+    # Xoá row này khi tính năng thật đầu tiên được thêm.
+    - id: machines-hg-boot
+      name: 'dsh-machines-hg'
+
+    # --- row thật ---
+    # Phase 1 (docs/PLAN.md): registry + status. Disabled trong lúc verify lab.
+    - id: machines-hg-registry
+      name: './src/tools-registry.js'
+      disabled: true
+
+    # Phase 2: pin session → machine, dispatch prompt qua SSH + `dsh headless`.
+    - id: machines-hg-pin
+      name: './src/tools-pin.js'
+      disabled: true
+
+    - id: machines-hg-dispatch
+      name: './src/tools-dispatch.js'
+
+    # Phase 3: cloudflared quick-tunnel + handoff attach URL.
+    - id: machines-hg-tunnel
+      name: './src/tools-tunnel.js'
+
+    - id: machines-hg-handoff
+      name: './src/tools-handoff.js'
+
+    # Phase 4: A2A v1.0.1 rewrite — inbound /a2a/<id> + outbound machine_a2a_call.
+    - id: machines-hg-a2a
+      name: './src/a2a.js'
+      disabled: true
+
+    # Roadmap row (planned, không thứ tự cam kết):
+    #   machines-hg-registry   — đăng ký máy: pair, identity, SSH/Tailscale endpoint
+    #   machines-hg-status     — status bar: máy online/offline, agent đang chạy ở đâu
+    #   machines-hg-dispatch   — tool: gửi prompt tới máy đích, spawn agent qua SSH/tunnel
+    #   machines-hg-handoff    — detach/resume session giữa các máy, pull transcript về

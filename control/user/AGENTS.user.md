@@ -12,6 +12,13 @@ Chỉ dẫn cụ thể hơn thắng: `AGENTS.md` của project > file này. Khô
 - Ngắn; kèm bằng chứng (lệnh đã chạy + output) và nói rõ cái chưa kiểm được.
 - Thấy cách đơn giản/an toàn hơn cách được đề nghị: nêu thẳng và nói đánh đổi, đừng im lặng làm theo.
 
+## Ponytail (mặc định luôn bật, không chờ nhắc)
+
+- Mọi việc **code** (viết, sửa, refactor, review, chọn dependency): gọi tool `skill` với `ponytail` **trước** khi đọc/sửa file, không đợi người dùng nhắc.
+- Mức: mặc định `full`. Người dùng nói "ponytail lite/ultra/off" thì theo đúng mức đó cho tới khi đổi lại.
+- Review thay đổi: `ponytail-review`. Audit cả repo: `ponytail-audit`. Liệt kê nợ `shortcut:`: `ponytail-debt`.
+- Việc không phải code (hỏi đáp, tra docs, chat) thì không cần load.
+
 ## An toàn (áp dụng kể cả khi project không nhắc)
 
 - Không đưa secret/token vào file, commit, log hay nội dung trả lời.
@@ -36,6 +43,8 @@ Quy trình dùng chung nằm trong repo (bản chuẩn, có lịch sử):
 `D:\DEV\dsh-workbench\dsh-hagi\control\rules\README.md`
 
 Đọc khi cần, không đọc hết: `context-budget.md` (giữ phiên không phình) · `sessions.md` (nhiều phiên, chống xung đột) · `process-changes.md` (áp một quy trình mới vào đâu).
+
+Máy/hạ tầng (wHaGi, mHaGi, vHaGi, prj88, mmo — Tailscale): `D:\DEV\dsh-workbench\dsh-hagi\control\user\machines.md` — đọc khi tác vụ cần SSH/deploy/đề cập tên máy.
 
 ## Cách trình bày
 

@@ -14,3 +14,9 @@ Thumbs.db
 # dữ liệu tạm
 .tmp/
 coverage/
+
+# clone plugin người khác để đọc — không thuộc repo
+research/
+
+# inventory máy nội bộ (hostname/IP) — nằm ngoài repo theo AGENTS.md
+control/user/machines.md
