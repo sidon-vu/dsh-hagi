@@ -7,7 +7,7 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`.
 
 | Package | Version | Row | Tag |
 |---|---|---|---|
-| dsh-dev-hg | **0.3.1** | `dev-hg-i18n-audit`, `dev-hg-guard` | `dsh-dev-hg/v0.3.1` |
+| dsh-dev-hg | **0.4.0** | `dev-hg-i18n-audit`, `dev-hg-guard`, `dev-hg-doctor` | `dsh-dev-hg/v0.4.0` |
 | dsh-session-hg | 0.1.0 | `session-hg-boot` (skeleton) | `dsh-session-hg/v0.1.0` |
 | dsh-ui-hg | 0.1.0 | `ui-hg-boot` (skeleton) | `dsh-ui-hg/v0.1.0` |
 
@@ -15,19 +15,20 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`.
 
 ## Việc kế tiếp trong repo
 
-1. **`dev-hg-doctor`** — row mới trong `dsh-dev-hg`. Done when: chạy trên 1 máy thật, báo đúng ≥ 1 lệch đã biết, không ghi gì ngoài báo cáo.
-2. `dev-hg-snapshot` rồi `dev-hg-rollback` (sau doctor).
+1. **`dev-hg-snapshot`** — export/import profile (patch + bundle list), không kèm credentials. Done when: export → xoá patch → import → profile chạy lại; file không chứa secret.
+2. `dev-hg-rollback` (sau snapshot).
 3. Row UI đầu tiên ở `dsh-ui-hg` — đọc [DESIGN.md](packages/dsh-ui-hg/docs/DESIGN.md), phải thử trong `lab`.
 
 ## Đang dở / nợ kỹ thuật
 
 - Guard chưa được thử bằng tool call thật trong phiên (đã có unit test + load OK).
-- Nợ i18n: text render trong `packages/dsh-dev-hg/src/tool.js` còn tiếng Việt cứng — xem mục "Ngoại lệ i18n" trong [FEATURES](packages/dsh-dev-hg/docs/FEATURES.md).
+- `profile_doctor` cũng chưa được gọi trong phiên chat thật: mới chứng minh register, boot `lab`, và chạy CLI trên profile thật.
+- Nợ i18n: text render trong `packages/dsh-dev-hg/src/tool.js` và `src/doctor-tool.js` còn tiếng Việt cứng — xem mục "Ngoại lệ i18n" trong [FEATURES](packages/dsh-dev-hg/docs/FEATURES.md).
 - `packages/_template` cố tình không theo dõi trong [TRACKING](docs/TRACKING.md).
 
 ## Nhịp phát hành (không đổi)
 
-bump version → [CHANGELOG](CHANGELOG.md) → `git tag <pkg>/v<ver>` → `node scripts/build-index.mjs` → commit `index.json` → push main + tag → `pnpm verify:release` → boot `lab` không có `entry did not activate`.
+bump version → [CHANGELOG](CHANGELOG.md) → **commit code** → `git tag <pkg>/v<ver>` (tag phải trỏ vào commit có code) → `node scripts/build-index.mjs` → commit `index.json` → push main + tag → `pnpm verify:release` → boot `lab` không có `entry did not activate`. Tag trước khi commit code là index trỏ vào bản cũ — đã một lần dính ở 0.4.0, phải xoá tag làm lại.
 
 ## Chỗ hay gãy
 

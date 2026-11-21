@@ -8,7 +8,7 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 | `dev-hg-i18n-audit` | Tool `i18n_audit`: quét plugin đã cài — thiếu `locale/`, thiếu `vi.json`, CJK cứng, CJK trong README | done (0.2.0) | Tool hiện trong phiên mới; quét profile thật ra ≥1 plugin; output đúng schema; `node test/smoke.mjs` pass | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
 | `dev-hg-guard` | Khoá mỗi tool call: chặn đường dẫn bảo vệ, lệnh phá huỷ, secret trong nội dung/lệnh | done (0.3.0) | `node test/guard.mjs` pass; bật bằng patch máy thì câu ghi vào `research/inbox` bị từ chối kèm lý do | **Mặc định tắt** trong package: ảnh hưởng mọi lời gọi tool |
 | `dev-hg-boot` | Row rỗng giữ bundle cài được | dropped (0.2.0) | — | Xoá khi có tính năng thật |
-| `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`workbench/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | wip | `node test/doctor.mjs` pass; chạy trên profile thật báo đúng lệch đã biết; `verify:release` + boot `lab` sạch; không ghi file | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
+| `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`workbench/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | `node test/doctor.mjs` pass; chạy trên profile thật báo đúng lệch đã biết; `verify:release` + boot `lab` sạch; không ghi file | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
 | `dev-hg-snapshot` | Export/import profile (patch + bundle list), không kèm credentials | planned | Export → xoá patch → import → profile chạy lại; file không chứa secret (grep) | |
 | `dev-hg-rollback` | Snapshot trước khi apply, rollback một bước | planned | Apply thay đổi → rollback → trạng thái cũ; có test | Phụ thuộc snapshot |
 
@@ -52,7 +52,7 @@ Tool name: `profile_doctor`. Chỉ đọc: **không ghi file, không sửa patch
 
 Nguồn dữ liệu: đĩa (manifest profile, `node_modules`, các lớp patch) là **đủ để chạy**; `ctx.pluginManager.listBundles()` là nguồn phán quyết của chính DSH (`availability`, `error`, `entryId`) và **không nằm trong `inject`** — thiếu service thì row vẫn activate, chỉ mất phần kiểm row sống. Dùng `disabled: true` để tắt hẳn.
 
-Giới hạn đã biết: parser patch là phẳng (chỉ `id` + `disabled` của entry, bỏ `disabled:` lồng trong `config`); không tự suy ra "đúng patch nào cho máy nào" nên phải truyền `desired`; nó báo lệch, không sửa.
+Giới hạn đã biết: parser patch là phẳng (chỉ `id` + `disabled` của entry, bỏ `disabled:` lồng trong `config`); trên đĩa chỉ đọc patch của dependency do profile khai (patch của bundle do bản cài cung cấp nằm ngoài profile nên phải có `pluginManager` mới thấy); không tự suy ra "đúng patch nào cho máy nào" nên phải truyền `desired`; nó báo lệch, không sửa.
 
 ## Ngoại lệ i18n (đang nợ)
 
