@@ -6,6 +6,8 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 ## [Unreleased]
 
 ### Added
+- `scripts/check-docs.mjs` (`pnpm check:docs`): mọi `.md` ≤ 200 dòng, link tương đối không gãy.
+- `scripts/verify-release.mjs` (`pnpm verify:release`): cài từng plugin trong `index.json` từ GitHub vào thư mục tạm, kiểm file, resolve row, gọi `apply()`.
 - `docs/RUNBOOKS.md`: RB-1 dựng máy mới, RB-2 cập nhật/rollback bundle, RB-3 DSH không boot sau khi cài plugin.
 - `docs/ARCHITECTURE.md`: row → bundle → ba đường cài, thứ tự ghép profile, marketplace, chỗ hay gãy, và bảng quyết định tài liệu (có/không có PRD, RULES, TASKS, PROGRESS).
 - `packages/dsh-ui-hg/docs/DESIGN.md`: luật UI (token, slot, locale, 4 trạng thái, checklist).

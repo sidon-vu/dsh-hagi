@@ -13,6 +13,8 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 | [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton | `research/REFERENCES.md` |
 | [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton | `research/REFERENCES.md` |
 
+`packages/_template` **cố tình không có dòng ở đây**: nó không phát hành, chỉ là bản mẫu để copy. Row `template-hg-boot` trong patch của nó tồn tại để bundle mẫu hợp lệ.
+
 ## Tính năng theo row
 
 ### dsh-dev-hg — Development & Ops

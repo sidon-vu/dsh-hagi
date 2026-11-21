@@ -20,6 +20,17 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 - Không ghi file, không đổi state. Muốn lưu báo cáo thì agent tự ghi `ANALYSIS.md`.
 - Chuỗi CJK **trong comment bị bỏ qua**; `dist/` bị bỏ qua khi có `src/`.
 
+## Ngoại lệ i18n (đang nợ)
+
+Luật: chữ người dùng nhìn thấy phải qua `locale/*.json`. Hiện **hai chỗ chưa theo**, đã ghi nhận thay vì giả vờ đúng:
+
+| Chỗ | Chữ gì | Vì sao chưa nối | Trả nợ khi |
+|---|---|---|---|
+| `src/tool.js:84–97` | Bảng kết quả render (tiêu đề cột, verdict) | Host-side render hiện dựng chuỗi trực tiếp, `locale/*.json` mới chỉ có `meta.*` | làm row UI đầu tiên (khi có `ctx.locale` dùng được) |
+| `src/audit.js:164,181` | Verdict `no-locale`/`no-vi` và nhãn tiếng Việt | là dữ liệu máy đọc, chỉ render mới cần dịch | như trên |
+
+Chữ dành cho model (tool description, mô tả tham số, thông báo lỗi) **cố định tiếng Anh** — không phải nợ.
+
 ## Ghi chú thiết kế
 
 - **Một tính năng = một row.** Không gộp, không dùng `config.features.*` (config bị thay thế wholesale).

@@ -12,7 +12,9 @@
   },
   "scripts": {
     "index": "node scripts/build-index.mjs",
-    "index:check": "node scripts/build-index.mjs --check"
+    "index:check": "node scripts/build-index.mjs --check",
+    "check:docs": "node scripts/check-docs.mjs",
+    "verify:release": "node scripts/verify-release.mjs"
   },
   "packageManager": "pnpm@10.33.0",
   "engines": {
