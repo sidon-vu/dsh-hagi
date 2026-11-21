@@ -34,7 +34,12 @@ Tag `dsh-dev-hg/v0.5.0`
 
 ### Verified
 - `node test/snapshot.mjs` pass (`ok: snapshot — 35+ assertion, tất cả pass`); `smoke`/`guard`/`doctor` vẫn pass.
-- `pnpm check:docs` pass.
+- `pnpm check:docs` pass; `pnpm index:check` khớp sau khi tag.
+- Boot `lab` (link `dsh-dev-hg` → source mới): URL có, **0** `did not activate`; `dump-config` ghép `dev-hg-snapshot → src/snapshot-tool.js`.
+- `pnpm verify:release`: cài `dsh-dev-hg@0.5.0` từ GitHub (commit `9160b50`), đăng ký `tools=[i18n_audit,profile_doctor,profile_snapshot] guards=1`.
+
+### Changed
+- `scripts/verify-release.mjs`: chấp nhận `PNPM_SCRIPT` (đường dẫn `pnpm.mjs` bundled) — cần khi máy không có `pnpm` trên PATH; lệnh add vẫn chạy `pnpm add <spec>` y hệt.
 
 ### Known limits
 - `link:`/`file:` trong manifest giữ spec nguyên bản — import trên máy khác phải sửa spec trước khi `dsh plugin add`.
