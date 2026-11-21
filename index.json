@@ -57,12 +57,12 @@
       },
       "versions": [
         {
-          "version": "0.3.1",
-          "publishTimestamp": 1795233333,
+          "version": "0.4.0",
+          "publishTimestamp": 1795236312,
           "source": {
             "type": "git",
             "url": "https://github.com/sidon-vu/dsh-hagi",
-            "commit": "17c3d08c4aea51a3a4466cd57a52476615110256",
+            "commit": "4498f9462ddfaebd19aaa13932441fffb8564a72",
             "path": "packages/dsh-dev-hg"
           },
           "engines": {
