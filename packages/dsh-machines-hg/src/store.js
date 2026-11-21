@@ -13,6 +13,12 @@ const jsonStringSchema = {
   safeParse(value) {
     return typeof value === 'string' ? { success: true, data: value } : { success: false, error: new Error('expected string') }
   },
+  // dsh-storage-domain also calls valueSchema.parse() when validating stored
+  // records on open (asar 0.2.2-rc.5 throws without it once records exist).
+  parse(value) {
+    if (typeof value !== 'string') throw new Error('expected string')
+    return value
+  },
 }
 
 /**

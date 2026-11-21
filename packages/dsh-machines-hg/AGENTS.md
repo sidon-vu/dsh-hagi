@@ -10,8 +10,8 @@ File này **không** nằm trong `files` của package → không phát hành ch
 | Row | Trạng thái | Ghi chú |
 |---|---|---|
 | `machines-hg-boot` | done | skeleton, xoá khi có row thật |
-| `machines-hg-registry` | wip | P1 code xong, lab mount sạch, tools chưa gọi thử trong chat |
-| `machines-hg-pin` | wip | P2: `machine_pin`/`machine_pin_status` binding contextId→machineId |
+| `machines-hg-registry` | done | **enabled** — `machine_list` verify trong lab chat (list đúng vhagi) |
+| `machines-hg-pin` | done | **enabled** — `machine_pin vhagi` verify trong lab chat (pin + status đúng) |
 | `machines-hg-dispatch` | done | **enabled** trong patch — e2e vHaGi `DISPATCH_OK` + resume `turn:2` |
 | `machines-hg-tunnel` | done | **enabled** — cloudflared spawn + `trycloudflare.com` parse verify 2026-11-21 |
 | `machines-hg-handoff` | done | **enabled** — `machine_sessions` scan `~/.dsh/sessions` vHaGi (5 sorted mtime) + `machine_attach` |

@@ -7,15 +7,13 @@
       name: 'dsh-machines-hg'
 
     # --- row thật ---
-    # Phase 1 (docs/PLAN.md): registry + status. Disabled trong lúc verify lab.
+    # Phase 1 (docs/PLAN.md): registry + status. Verify xong trong lab chat.
     - id: machines-hg-registry
       name: './src/tools-registry.js'
-      disabled: true
 
     # Phase 2: pin session → machine, dispatch prompt qua SSH + `dsh headless`.
     - id: machines-hg-pin
       name: './src/tools-pin.js'
-      disabled: true
 
     - id: machines-hg-dispatch
       name: './src/tools-dispatch.js'

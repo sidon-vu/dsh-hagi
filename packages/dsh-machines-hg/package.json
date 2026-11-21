@@ -1,7 +1,7 @@
 {
   "name": "dsh-machines-hg",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "Multi-machine fleet for DeepSeek Harness: pair DSH instances over SSH/Tailscale, pick one as the always-on agent host, dispatch and resume sessions across machines.",
   "type": "module",
   "license": "MIT",
