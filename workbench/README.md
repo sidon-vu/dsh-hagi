@@ -16,6 +16,8 @@ workbench/
 
 `user/skills/` là bản chuẩn **có lịch sử** của các skill học được: sửa ở đây rồi copy sang `~/.dsh/skills/`. DSH tự quét thư mục đó (root `user-dsh`, rank 400) nên skill mới hiện trong catalog của phiên; đặt trong repo thì không tự nạp, đúng ý.
 
+**Skill của bên thứ ba** (ví dụ `skill-forge` lấy từ `~/.agents/skills/`) chỉ copy vào `~/.dsh/skills/`, **không** đưa vào repo này — repo phát hành công khai, không có quyền redistribute. Chỉ skill do ta viết nằm trong `user/skills/`.
+
 `user/AGENTS.user.md` là **bản chuẩn có lịch sử** của `~/.dsh/AGENTS.md`: sửa ở đây rồi copy ra `~/.dsh/AGENTS.md`. DSH nạp bản trong home cho mọi phiên; file trong repo chỉ để theo dõi thay đổi. Cố tình đặt tên `AGENTS.user.md` (không phải `AGENTS.md`) để DSH không nạp nhầm nó như chỉ dẫn của repo này.
 
 ## Cách dùng
