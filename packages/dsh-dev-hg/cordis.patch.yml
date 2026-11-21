@@ -18,6 +18,11 @@
     - id: dev-hg-doctor
       name: './src/doctor-tool.js'
 
+    # Đóng gói / dựng lại profile: export một manifest JSON không credentials,
+    # import dựng lại thư mục profile. Chỉ đọc khi export; import có dry-run.
+    - id: dev-hg-snapshot
+      name: './src/snapshot-tool.js'
+
     # --- thêm tính năng mới theo mẫu ---
     # - id: dev-hg-<tên-tính-năng>
     #   name: './src/<file>.js'

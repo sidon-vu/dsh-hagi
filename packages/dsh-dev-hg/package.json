@@ -1,6 +1,6 @@
 {
   "name": "dsh-dev-hg",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Development and operations for DeepSeek Harness: audit installed plugins, check profile health, snapshot and roll back changes.",
   "type": "module",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node test/smoke.mjs && node test/guard.mjs && node test/doctor.mjs"
+    "test": "node test/smoke.mjs && node test/guard.mjs && node test/doctor.mjs && node test/snapshot.mjs"
   },
   "engines": {
     "dsh": ">=0.2.2-rc.5 <0.3.0"

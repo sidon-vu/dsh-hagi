@@ -30,8 +30,13 @@ const index = JSON.parse(fs.readFileSync(path.join(REPO, 'index.json'), 'utf8'))
 const targets = index.plugins.filter((p) => (only ? p.name === only : true))
 if (targets.length === 0) fail(`không có plugin nào khớp ${only ?? '(tất cả)'}`)
 
+const pnpmArgs = (args) => process.env.PNPM_SCRIPT
+  ? [process.execPath, process.env.PNPM_SCRIPT, ...args]
+  : ['pnpm', ...args]
+
 try {
-  execFileSync('pnpm', ['--version'], { encoding: 'utf8' })
+  const [cmd, ...rest] = pnpmArgs(['--version'])
+  execFileSync(cmd, rest, { encoding: 'utf8' })
 } catch {
   fail('không chạy được pnpm trên PATH')
 }
@@ -75,7 +80,8 @@ for (const plugin of targets) {
   const label = `${plugin.name}@${version.version}`
   try {
     fs.writeFileSync(path.join(tmp, 'package.json'), JSON.stringify({ name: 'hg-verify', private: true }))
-    execFileSync('pnpm', ['add', spec, '--reporter=silent'], { cwd: tmp, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 300_000 })
+    const [addCmd, ...addArgs] = pnpmArgs(['add', spec, '--reporter=silent'])
+    execFileSync(addCmd, addArgs, { cwd: tmp, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 300_000 })
     const pkgDir = path.join(tmp, 'node_modules', plugin.name)
     if (!fs.existsSync(pkgDir)) throw new Error(`cài xong nhưng không thấy ${plugin.name} trong node_modules`)
 

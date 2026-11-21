@@ -73,7 +73,23 @@ It only reports — it never writes or fixes. When DSH's own plugin manager is a
 
 Full status table and design notes: [docs/FEATURES.md](docs/FEATURES.md).
 
-Planned rows: `dev-hg-snapshot` (export/import a profile without credentials), `dev-hg-rollback` (undo one step).
+### `profile_snapshot` — export / restore a profile (0.5.0)
+
+Packs a profile into one JSON manifest — name, each bundle's install `spec` and installed `version`, plus `cordis.patch.yml` and loose config files. **Never credentials:** sensitive filenames (`credentials.yaml`, `*.key`, `*.pem`, `.env`, anything matching token/secret/password) and files whose content hits a secret pattern (private key, `ghp_`, `sk-`) are left out. `node_modules` is never packed — you reinstall from the spec.
+
+Parameters: `action` (`export`/`import`), `profile`, `out`, `source`, `target`, `force`, `confirm`. Import is **dry-run first** — nothing is written until `confirm: true`.
+
+```powershell
+# on machine A: export profile lab
+profile_snapshot({ action:'export', profile:'~/.dsh/profiles/lab', out:'lab.snapshot.json' })
+# on machine B: preview then write
+profile_snapshot({ action:'import', source:'lab.snapshot.json', target:'~/.dsh/profiles/lab' })
+profile_snapshot({ action:'import', source:'lab.snapshot.json', target:'~/.dsh/profiles/lab', confirm:true })
+```
+
+The manifest only carries what install needs — after import you still `dsh plugin --profile lab add <spec>` for each entry in `needsInstall`.
+
+Planned rows: `dev-hg-rollback` (undo one step).
 
 ## Requirements
 
@@ -90,8 +106,11 @@ dsh-dev-hg/
 ├─ src/tool.js         # plugin entry: registers the i18n_audit tool
 ├─ src/doctor.js       # pure drift checks (profile_doctor)
 ├─ src/doctor-tool.js  # plugin entry: registers the profile_doctor tool
+├─ src/snapshot.js     # pure pack/unpack logic (profile_snapshot)
+├─ src/snapshot-tool.js # plugin entry: registers the profile_snapshot tool
 ├─ test/smoke.mjs      # node test/smoke.mjs — no framework
 ├─ test/doctor.mjs     # node test/doctor.mjs — no framework
+├─ test/snapshot.mjs   # node test/snapshot.mjs — no framework
 ├─ locale/en.json      # display strings
 ├─ locale/vi.json
 └─ docs/FEATURES.md
@@ -105,6 +124,8 @@ In your profile patch — the package stays installed, the tool disappears:
 - id: dev-hg-i18n-audit
   disabled: true
 - id: dev-hg-doctor
+  disabled: true
+- id: dev-hg-snapshot
   disabled: true
 ```
 

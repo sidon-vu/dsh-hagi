@@ -7,7 +7,7 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`.
 
 | Package | Version | Row | Tag |
 |---|---|---|---|
-| dsh-dev-hg | **0.4.0** | `dev-hg-i18n-audit`, `dev-hg-guard`, `dev-hg-doctor` | `dsh-dev-hg/v0.4.0` |
+| dsh-dev-hg | **0.5.0** | `dev-hg-i18n-audit`, `dev-hg-guard`, `dev-hg-doctor`, `dev-hg-snapshot` | `dsh-dev-hg/v0.5.0` |
 | dsh-session-hg | 0.1.0 | `session-hg-boot` (skeleton) | `dsh-session-hg/v0.1.0` |
 | dsh-ui-hg | 0.1.0 | `ui-hg-boot` (skeleton) | `dsh-ui-hg/v0.1.0` |
 
@@ -15,9 +15,8 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`.
 
 ## Việc kế tiếp trong repo
 
-1. **`dev-hg-snapshot`** — export/import profile (patch + bundle list), không kèm credentials. Done when: export → xoá patch → import → profile chạy lại; file không chứa secret.
-2. `dev-hg-rollback` (sau snapshot).
-3. Row UI đầu tiên ở `dsh-ui-hg` — đọc [DESIGN.md](packages/dsh-ui-hg/docs/DESIGN.md), phải thử trong `lab`.
+1. **`dev-hg-rollback`** — snapshot trước khi apply, rollback một bước. Dùng `dev-hg-snapshot` vừa phát hành.
+2. Row UI đầu tiên ở `dsh-ui-hg` — đọc [DESIGN.md](packages/dsh-ui-hg/docs/DESIGN.md), phải thử trong `lab`.
 
 ## Đang dở / nợ kỹ thuật
 

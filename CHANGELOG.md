@@ -24,6 +24,22 @@ Tag `dsh-dev-hg/v0.4.0`
 - Parsing patch là phẳng: chỉ `id` + `disabled` của entry, bỏ `disabled:` lồng trong `config`; không tự suy ra patch nào thuộc máy nào nên phải truyền `desired`.
 - Render của tool còn tiếng Việt cứng (nợ i18n, xem `docs/FEATURES.md`).
 
+## dsh-dev-hg 0.5.0 — 2026-11-21
+
+Tag `dsh-dev-hg/v0.5.0`
+
+### Added
+- Row `dev-hg-snapshot` + tool `profile_snapshot`: export một profile thành manifest JSON (`name`, `bundles[]` với `spec` + `version` đọc từ `node_modules`, `files` chứa `cordis.patch.yml` và config rời) và import dựng lại thư mục profile. Manifest **không chứa credentials**: tên file khớp `credential|secret|token|*.key|*.pem|password|passwd|.env` hoặc nội dung khớp private key/`ghp_`/`sk-` bị loại. Import mặc định **dry-run**, phải `confirm: true` mới ghi; `force` để ghi đè. Không tự `dsh plugin add` — trả `needsInstall[]` để agent làm.
+- `src/snapshot.js` (logic thuần, không import DSH), `src/snapshot-tool.js` (entry + tool), `test/snapshot.mjs` (35+ assertion: export→xoá patch→import→khôi phục, secret bị loại, dry-run/confirm/force, args validation).
+
+### Verified
+- `node test/snapshot.mjs` pass (`ok: snapshot — 35+ assertion, tất cả pass`); `smoke`/`guard`/`doctor` vẫn pass.
+- `pnpm check:docs` pass.
+
+### Known limits
+- `link:`/`file:` trong manifest giữ spec nguyên bản — import trên máy khác phải sửa spec trước khi `dsh plugin add`.
+- Chặn secret theo pattern mạnh nhưng không phải máy quét toàn diện; file nhạy cảm ở thư mục con (ngoài root) không được gói và cũng không được quét.
+
 ## [Unreleased]
 
 ### Added
@@ -49,7 +65,7 @@ Tag `dsh-dev-hg/v0.4.0`
 - `AGENTS.md`: thêm Definition of Done + bước CHANGELOG trong release.
 
 ### Planned
-- `dsh-dev-hg`: `dev-hg-snapshot`, `dev-hg-rollback`
+- `dsh-dev-hg`: `dev-hg-rollback`
 - `dsh-session-hg`: `session-hg-context-panel`, `session-hg-archive`, `session-hg-rewind`
 - `dsh-ui-hg`: `ui-hg-statusbar`, `ui-hg-locale-switch`, `ui-hg-density`
 

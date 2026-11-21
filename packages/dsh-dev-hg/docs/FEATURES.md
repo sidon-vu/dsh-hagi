@@ -9,7 +9,7 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 | `dev-hg-guard` | Khoá mỗi tool call: chặn đường dẫn bảo vệ, lệnh phá huỷ, secret trong nội dung/lệnh | done (0.3.0) | `node test/guard.mjs` pass; bật bằng patch máy thì câu ghi vào `research/inbox` bị từ chối kèm lý do | **Mặc định tắt** trong package: ảnh hưởng mọi lời gọi tool |
 | `dev-hg-boot` | Row rỗng giữ bundle cài được | dropped (0.2.0) | — | Xoá khi có tính năng thật |
 | `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`workbench/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | `node test/doctor.mjs` pass; chạy trên profile thật báo đúng lệch đã biết; `verify:release` + boot `lab` sạch; không ghi file | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
-| `dev-hg-snapshot` | Export/import profile (patch + bundle list), không kèm credentials | planned | Export → xoá patch → import → profile chạy lại; file không chứa secret (grep) | |
+| `dev-hg-snapshot` | Tool `profile_snapshot`: export/import profile (patch + bundle list), không kèm credentials | done (0.5.0) | `node test/snapshot.mjs` pass; export → xoá patch → import → file quay lại; manifest serialise không chứa `ghp_`/`sk-`; `verify:release` + boot `lab` sạch | Bật mặc định: export chỉ đọc, import bắt buộc `confirm` |
 | `dev-hg-rollback` | Snapshot trước khi apply, rollback một bước | planned | Apply thay đổi → rollback → trạng thái cũ; có test | Phụ thuộc snapshot |
 
 ## Hợp đồng của `dev-hg-i18n-audit`
@@ -53,6 +53,26 @@ Tool name: `profile_doctor`. Chỉ đọc: **không ghi file, không sửa patch
 Nguồn dữ liệu: đĩa (manifest profile, `node_modules`, các lớp patch) là **đủ để chạy**; `ctx.pluginManager.listBundles()` là nguồn phán quyết của chính DSH (`availability`, `error`, `entryId`) và **không nằm trong `inject`** — thiếu service thì row vẫn activate, chỉ mất phần kiểm row sống. Dùng `disabled: true` để tắt hẳn.
 
 Giới hạn đã biết: parser patch là phẳng (chỉ `id` + `disabled` của entry, bỏ `disabled:` lồng trong `config`); trên đĩa chỉ đọc patch của dependency do profile khai (patch của bundle do bản cài cung cấp nằm ngoài profile nên phải có `pluginManager` mới thấy); không tự suy ra "đúng patch nào cho máy nào" nên phải truyền `desired`; nó báo lệch, không sửa.
+
+## Hợp đồng của `dev-hg-snapshot`
+
+Tool name: `profile_snapshot`. Một file manifest JSON duy nhất — copy sang máy khác được, đặt vào git được, **không chứa credentials**.
+
+| Tham số | Kiểu | Việc |
+|---|---|---|
+| `action` | `export` \| `import` (bắt buộc) | export: profile → manifest; import: manifest → profile |
+| `profile` | string, tuỳ chọn | export: thư mục profile đọc; mặc định `DSH_PROFILE_DIR` |
+| `out` | string, tuỳ chọn | export: đường dẫn manifest ghi ra; mặc định `<profile>/snapshot.json` |
+| `source` | string, bắt buộc khi import | file manifest đọc vào |
+| `target` | string, bắt buộc khi import | thư mục profile ghi ra |
+| `force` | boolean, mặc định `false` | import: ghi đè file đã tồn tại; mặc định skip |
+| `confirm` | boolean, mặc định `false` | import: thật sự ghi; không truyền thì chỉ dry-run |
+
+**Export** gói `package.json` (chỉ field `name`/`private`/`dependencies`/`devDependencies`/`dsh`), danh sách bundle `name + spec + version` (đọc `node_modules/<name>/package.json`), và mọi file `.yml`/`.yaml`/`.txt`/`.json` ở gốc profile **trừ** `package.json`, lock file, tên chứa `credential/secret/token/key/pem/password/.env`, và file có nội dung khớp private key / `ghp_` / `sk-`. **`node_modules` không bao giờ được gói** — chỉ có `spec` để cài lại.
+
+**Import** mặc định là dry-run (chỉ liệt kê file sẽ ghi); `confirm: true` mới ghi. Ghi `package.json` (deps dựng lại từ `snapshot.bundles`, không mang field lạ) + `cordis.patch.yml` + các file cấu hình đã gói; **không chạy install** — trả `needsInstall[]` để agent tự `dsh plugin add` từng spec. File đã có và không `force` thì `skipped[]`.
+
+Giới hạn đã biết: spec `link:`/`file:` trong manifest trỏ đường dẫn tuyệt đối của máy gốc — import máy khác phải sửa lại spec trước khi `dsh plugin add`; không gói `node_modules` nên cài lại là bắt buộc; không gói file ẩn (`.credentials.yaml` bị loại theo luật tên nhạy cảm); chặn secret theo pattern mạnh nhưng không phải máy quét toàn diện — đừng gói profile có secret ở chỗ tool không nhìn (ví dụ trong `dsh` config lồng nhau không nằm mẫu quét).
 
 ## Ngoại lệ i18n (đang nợ)
 
