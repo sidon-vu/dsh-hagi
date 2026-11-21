@@ -6,6 +6,8 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 ## [Unreleased]
 
 ### Added
+- `workbench/user/AGENTS.user.md`: bản chuẩn có lịch sử của `~/.dsh/AGENTS.md` — luật user-level cho mọi phiên DSH (tiếng Việt, an toàn, precedence, bảng "công cụ nào đọc file nào", learned-skills).
+- RB-1 bước 3: máy mới phải copy file user-level trước khi dùng.
 - `scripts/check-docs.mjs` (`pnpm check:docs`): mọi `.md` ≤ 200 dòng, link tương đối không gãy.
 - `scripts/verify-release.mjs` (`pnpm verify:release`): cài từng plugin trong `index.json` từ GitHub vào thư mục tạm, kiểm file, resolve row, gọi `apply()`.
 - `docs/RUNBOOKS.md`: RB-1 dựng máy mới, RB-2 cập nhật/rollback bundle, RB-3 DSH không boot sau khi cài plugin.
