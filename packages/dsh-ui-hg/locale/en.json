@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "hg · UI & Experience",
+    "description": "Interface additions for DeepSeek Harness: a multi-machine status bar, a language switch for hg plugins, and display density."
+  }
+}

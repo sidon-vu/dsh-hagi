@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "hg · Mẫu plugin",
+    "description": "Mẫu nội bộ: copy thư mục này để tạo package plugin hg mới."
+  }
+}

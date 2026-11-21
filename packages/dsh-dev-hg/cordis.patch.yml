@@ -1,0 +1,12 @@
+# Mỗi item dưới đây là MỘT row = MỘT tính năng. Row id là hợp đồng vĩnh viễn:
+# mọi patch máy (workbench/profiles/<máy>/) trỏ vào id, nên không đổi tên.
+- insert:
+    # --- skeleton: row rỗng để bundle cài được và hiện trong Plugins ---
+    # Xoá row này khi tính năng thật đầu tiên được thêm.
+    - id: dev-hg-boot
+      name: 'dsh-dev-hg'
+
+    # --- thêm tính năng mới theo mẫu ---
+    # - id: dev-hg-<tên-tính-năng>
+    #   name: 'dsh-dev-hg/src/<file>'
+    #   disabled: true      # mặc định tắt khi còn thử nghiệm

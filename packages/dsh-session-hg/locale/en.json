@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "hg · Session & Context",
+    "description": "Session and context tooling for DeepSeek Harness: inspect context usage, archive and rewind sessions."
+  }
+}

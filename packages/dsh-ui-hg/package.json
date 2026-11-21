@@ -1,0 +1,40 @@
+{
+  "name": "dsh-ui-hg",
+  "version": "0.1.0",
+  "description": "Interface additions for DeepSeek Harness: a multi-machine status bar, a language switch for hg plugins, and display density.",
+  "type": "module",
+  "license": "MIT",
+  "author": "HaGizen",
+  "exports": {
+    ".": "./index.js",
+    "./icon": "./icon.svg",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md"
+  ],
+  "engines": {
+    "dsh": ">=0.2.2-rc.5 <0.3.0"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "market": {
+      "category": "interface",
+      "keywords": [
+        "dsh",
+        "ui",
+        "statusbar",
+        "i18n"
+      ],
+      "labels": []
+    }
+  }
+}

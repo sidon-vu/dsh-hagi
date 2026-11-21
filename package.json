@@ -1,0 +1,21 @@
+{
+  "name": "dsh-hagi",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Personal DeepSeek Harness plugin marketplace: dev, session and UI plugin groups with an installable index",
+  "type": "module",
+  "license": "MIT",
+  "author": "HaGizen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OWNER/dsh-hagi"
+  },
+  "scripts": {
+    "index": "node scripts/build-index.mjs",
+    "index:check": "node scripts/build-index.mjs --check"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

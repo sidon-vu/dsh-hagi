@@ -1,0 +1,57 @@
+# TRACKING.md — bảng theo dõi nhóm / package / tính năng
+
+Cập nhật lần cuối: 2026-11-21 (khởi tạo sườn).
+
+**Trạng thái:** `planned` chưa làm · `wip` đang làm · `done` đã phát hành · `dropped` bỏ (ghi lý do).
+Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
+
+## Theo package
+
+| Package | Nhóm | Version | Trạng thái | Reference chính |
+|---|---|---|---|---|
+| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.1.0 | skeleton | [REFERENCES](../../research/REFERENCES.md) |
+| [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton | [REFERENCES](../../research/REFERENCES.md) |
+| [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton | [REFERENCES](../../research/REFERENCES.md) |
+
+## Tính năng theo row
+
+### dsh-dev-hg — Development & Ops
+
+| Row id | Tính năng | Trạng thái | Ghi chú |
+|---|---|---|---|
+| `dev-hg-boot` | Row rỗng giữ bundle cài được | done | xoá khi có tính năng thật đầu tiên |
+| `dev-hg-i18n-audit` | Quét plugin đang cài: chuỗi CJK cứng, thiếu `locale/vi.json`, xuất báo cáo | planned | ưu tiên 1 — dùng cho chính quy trình port |
+| `dev-hg-doctor` | So desired state (`workbench/profiles/*`) với máy: bundle thiếu, link gãy, version lệch | planned | thay script rời |
+| `dev-hg-snapshot` | Export/import profile (patch + bundle list), không kèm credentials | planned | |
+| `dev-hg-rollback` | Snapshot trước khi apply, rollback 1 nút | planned | sau snapshot |
+
+### dsh-session-hg — Session & Context
+
+| Row id | Tính năng | Trạng thái | Ghi chú |
+|---|---|---|---|
+| `session-hg-boot` | Row rỗng giữ bundle cài được | done | xoá khi có tính năng thật |
+| `session-hg-context-panel` | Phân rã token/context theo file, tool, lượt | planned | học từ `bowenliang123/dsh-context` (ABSORB) |
+| `session-hg-archive` | Xem/khôi phục session đã archive | planned | |
+| `session-hg-rewind` | Tua về message trước đó trong cửa sổ | planned | |
+
+### dsh-ui-hg — UI & Experience
+
+| Row id | Tính năng | Trạng thái | Ghi chú |
+|---|---|---|---|
+| `ui-hg-boot` | Row rỗng giữ bundle cài được | done | xoá khi có tính năng thật |
+| `ui-hg-statusbar` | Status bar đa máy: máy hiện tại, profile, plugin lệch | planned | đây là lý do vào nhóm interface |
+| `ui-hg-locale-switch` | Chuyển EN/VI cho chuỗi của các plugin hg | planned | phụ thuộc cả 3 package |
+| `ui-hg-density` | Mật độ hiển thị (compact/normal) | planned | |
+
+## Quy tắc cập nhật
+
+1. Bắt đầu làm: `planned` → `wip`, thêm ngày.
+2. Phát hành: `wip` → `done`, cập nhật version ở bảng package.
+3. Bỏ: `dropped` + lý do một dòng. Không xoá dòng.
+4. Khi thêm/sửa row: cập nhật đồng thời `packages/<pkg>/docs/FEATURES.md` (bảng chi tiết) — file này là bảng tổng, không lặp chi tiết kỹ thuật.
+
+## Liên quan
+
+- Nhóm và quyết định chọn nhóm: `../../research/GROUPS.md`
+- Plugin tham khảo: `../../research/REFERENCES.md`
+- Quy trình port: [PORTING.md](PORTING.md)

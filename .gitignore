@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+Thumbs.db
+
+# không bao giờ commit
+.credentials*
+*.pem
+*.key
+.env
+.env.*
+
+# dữ liệu tạm
+.tmp/
+coverage/

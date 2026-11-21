@@ -1,0 +1,40 @@
+{
+  "name": "dsh-session-hg",
+  "version": "0.1.0",
+  "description": "Session and context tooling for DeepSeek Harness: inspect context usage, archive and rewind sessions.",
+  "type": "module",
+  "license": "MIT",
+  "author": "HaGizen",
+  "exports": {
+    ".": "./index.js",
+    "./icon": "./icon.svg",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md"
+  ],
+  "engines": {
+    "dsh": ">=0.2.2-rc.5 <0.3.0"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "market": {
+      "category": "session",
+      "keywords": [
+        "dsh",
+        "session",
+        "context",
+        "archive"
+      ],
+      "labels": []
+    }
+  }
+}

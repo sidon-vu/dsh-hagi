@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "hg · Plugin template",
+    "description": "Internal template: copy this directory to start a new hg plugin package."
+  }
+}

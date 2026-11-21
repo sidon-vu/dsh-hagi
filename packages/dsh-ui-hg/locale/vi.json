@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "hg · Giao diện & Trải nghiệm",
+    "description": "Bổ sung giao diện cho DeepSeek Harness: status bar đa máy, chuyển ngôn ngữ cho plugin hg, và mật độ hiển thị."
+  }
+}
