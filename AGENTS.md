@@ -67,5 +67,5 @@ Chạy đủ mục **Definition of Done** trong `AGENTS.md` của workbench (ngo
 - [ ] `node packages/<pkg>/test/smoke.mjs` pass (nếu package có test).
 - [ ] Không có file `node_modules`/`dist` bất ngờ, không có secret trong diff.
 - [ ] `docs/TRACKING.md`, `docs/FEATURES.md`, `CHANGELOG.md` khớp thực tế.
-- [ ] Row id mới không trùng, đúng prefix nhóm.
+- [ ] **Đóng lượt:** mục "Kế tiếp" trong `packages/<pkg>/AGENTS.md` và [HANDOFF.md](HANDOFF.md) đã cập nhật; câu trả lời kết bằng **đúng một** bước tiếp theo cụ thể (không để "chưa chốt").
 - [ ] Gặp sự cố vận hành: theo [docs/RUNBOOKS.md](docs/RUNBOOKS.md), không tự nghĩ quy trình mới.

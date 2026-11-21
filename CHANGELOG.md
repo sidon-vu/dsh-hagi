@@ -66,7 +66,8 @@ Tag `dsh-dev-hg/v0.6.0`
 ## [Unreleased]
 
 ### Changed
-- Đổi tên `control/` → `control/` (trong repo) vì trùng tên với thư mục làm việc `dsh-workbench/`. Không đổi nội dung, chỉ đổi đường dẫn; 21 file được cập nhật tham chiếu, `control/README.md` giải thích rõ hai thư mục.
+- Đổi tên thư mục trong repo `workbench/` → `control/` vì trùng tên với thư mục làm việc `dsh-workbench/`. Không đổi nội dung, chỉ đổi đường dẫn; 27 file được cập nhật tham chiếu, `control/README.md` giải thích rõ hai thư mục.
+- Chốt việc kế tiếp: `session-hg-context-panel`. Trước đó `HANDOFF.md` để "chưa chốt" nên phiên làm xong không đưa ra gợi ý bước sau. Thêm luật **đóng lượt** vào checklist repo: cập nhật mục "Kế tiếp" trong `packages/<pkg>/AGENTS.md` + `HANDOFF.md`, và kết câu trả lời bằng đúng một bước tiếp theo.
 
 ### Added
 - `control/sources/`: lưu **nguyên văn** ba tài liệu đã đưa để áp dụng (6 file vibe coding, pstack/Lauren Tan, audit luật + hook) kèm bảng "đã áp dụng / không áp dụng" và lý do. Trước đó chỉ có kết quả, không có nguồn.

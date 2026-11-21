@@ -17,8 +17,8 @@ File này **không** nằm trong `files` của package → không phát hành ch
 
 ## Đang làm / kế tiếp
 
-- Kế tiếp: chưa chốt (xem [../../HANDOFF.md](../../HANDOFF.md)).
-- Chặn: `guard`, `doctor` chưa được gọi trong phiên chat thật (mới unit test + boot `lab`).
+- **Hết row planned trong package này.** Kế tiếp của repo đã chốt: `session-hg-context-panel` (xem [../../HANDOFF.md](../../HANDOFF.md)).
+- Chặn: `guard`, `doctor`, `rollback` chưa được gọi trong phiên chat thật (mới unit test + boot `lab`) — cần người dùng thử.
 
 ## Luật riêng của package
 

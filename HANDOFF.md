@@ -15,9 +15,13 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`. Danh
 
 ## Việc kế tiếp trong repo
 
-1. **`dev-hg-rollback`** — ✅ released ở 0.6.0. Kế tiếp trong `dsh-dev-hg`: chưa chốt — có thể gọi `profile_rollback`/`guard`/`doctor` trong phiên chat thật để xác minh.
-2. Row UI đầu tiên ở `dsh-ui-hg` — đọc [DESIGN.md](packages/dsh-ui-hg/docs/DESIGN.md), phải thử trong `lab`.
-3. `dsh-session-hg` — row đầu tiên nên là `session-hg-context-panel`.
+**Đã chốt 2026-11-21:** kế tiếp là **`session-hg-context-panel`** trong `dsh-session-hg` — không có bề mặt UI, dùng bản ABSORB đã có, và mở khoá chủ đề "session" (hai package còn lại vẫn skeleton).
+
+1. **`session-hg-context-panel`** — row đầu tiên của `dsh-session-hg`. Done when: số liệu khớp một phiên thật (sai số 0), đủ 4 trạng thái, chuỗi en+vi.
+2. **Chờ người dùng (2 phút):** gọi thử `i18n_audit`, `profile_doctor`, `profile_rollback` trong một phiên chat thật (lab) — đây là nợ xác minh duy nhất của `dsh-dev-hg`.
+3. **Sau đó:** row UI đầu tiên ở `dsh-ui-hg` — đọc [DESIGN.md](packages/dsh-ui-hg/docs/DESIGN.md), phải thử trong `lab`.
+
+Quy tắc: khi xong một việc, cập nhật mục này + mục "Kế tiếp" trong `packages/<pkg>/AGENTS.md`, và **đóng câu trả lời bằng đúng một bước tiếp theo**.
 
 ## Đang dở / nợ kỹ thuật
 
