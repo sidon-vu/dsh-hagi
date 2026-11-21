@@ -7,6 +7,10 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 
 ### Added
 - `docs/RUNBOOKS.md`: RB-1 dựng máy mới, RB-2 cập nhật/rollback bundle, RB-3 DSH không boot sau khi cài plugin.
+- `docs/ARCHITECTURE.md`: row → bundle → ba đường cài, thứ tự ghép profile, marketplace, chỗ hay gãy, và bảng quyết định tài liệu (có/không có PRD, RULES, TASKS, PROGRESS).
+- `packages/dsh-ui-hg/docs/DESIGN.md`: luật UI (token, slot, locale, 4 trạng thái, checklist).
+- Cột **Done when** trong `docs/FEATURES.md` của cả 4 package.
+- Dòng `wip:` trong `TRACKING.md` làm nơi ghi tiến độ đang làm (thay cho `PROGRESS.md` riêng).
 - `CHANGELOG.md` (file này); bước release bắt buộc cập nhật.
 
 ### Changed

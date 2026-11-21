@@ -46,12 +46,15 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 ## Quy tắc cập nhật
 
 1. Bắt đầu làm: `planned` → `wip`, thêm ngày.
-2. Phát hành: `wip` → `done`, cập nhật version ở bảng package.
-3. Bỏ: `dropped` + lý do một dòng. Không xoá dòng.
-4. Khi thêm/sửa row: cập nhật đồng thời `packages/<pkg>/docs/FEATURES.md` (bảng chi tiết) — file này là bảng tổng, không lặp chi tiết kỹ thuật.
+2. Khi đang `wip`, thêm ngay dưới bảng của package một dòng:
+   `> wip: <đang ở đâu · chặn gì · bước kế tiếp>` — xoá khi `done`/`dropped`. Đây là "PROGRESS" duy nhất của repo; đừng tạo file trạng thái riêng.
+3. Phát hành: `wip` → `done`, cập nhật version ở bảng package.
+4. Bỏ: `dropped` + lý do một dòng. Không xoá dòng.
+5. Khi thêm/sửa row: cập nhật đồng thời `packages/<pkg>/docs/FEATURES.md` (có cột **Done when**) — file này là bảng tổng, không lặp chi tiết kỹ thuật.
 
 ## Liên quan
 
+- Kiến trúc (row → bundle → cài đặt): [ARCHITECTURE.md](ARCHITECTURE.md)
 - Nhóm và quyết định chọn nhóm: `research/GROUPS.md` (ngoài repo)
 - Plugin tham khảo: `research/REFERENCES.md` (ngoài repo)
 - Quy trình port: [PORTING.md](PORTING.md)

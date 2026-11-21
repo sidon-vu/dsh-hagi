@@ -2,6 +2,7 @@
 
 | File | Dùng khi nào |
 |---|---|
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Cần hiểu row → bundle → cài đặt chạy thế nào |
 | [TRACKING.md](TRACKING.md) | Cần biết nhóm nào có gì, tính năng nào tới đâu |
 | [PORTING.md](PORTING.md) | Đang cân nhắc port/fork một plugin cộng đồng |
 | [RUNBOOKS.md](RUNBOOKS.md) | Cài máy mới, nâng cấp/rollback, DSH không boot |
