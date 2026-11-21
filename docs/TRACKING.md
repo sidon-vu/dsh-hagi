@@ -9,9 +9,9 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 
 | Package | Nhóm | Version | Trạng thái | Reference chính |
 |---|---|---|---|---|
-| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.2.0 | 1 tính năng | [REFERENCES](../../research/REFERENCES.md) |
-| [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton | [REFERENCES](../../research/REFERENCES.md) |
-| [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton | [REFERENCES](../../research/REFERENCES.md) |
+| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.2.0 | 1 tính năng | `research/REFERENCES.md` |
+| [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton | `research/REFERENCES.md` |
+| [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton | `research/REFERENCES.md` |
 
 ## Tính năng theo row
 
@@ -52,6 +52,6 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 
 ## Liên quan
 
-- Nhóm và quyết định chọn nhóm: `../../research/GROUPS.md`
-- Plugin tham khảo: `../../research/REFERENCES.md`
+- Nhóm và quyết định chọn nhóm: `research/GROUPS.md` (ngoài repo)
+- Plugin tham khảo: `research/REFERENCES.md` (ngoài repo)
 - Quy trình port: [PORTING.md](PORTING.md)

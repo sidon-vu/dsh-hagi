@@ -1,6 +1,6 @@
 # AGENTS.md — dsh-hagi
 
-Repo này là marketplace + code plugin. Luật gốc của workspace nằm ở [../AGENTS.md](../AGENTS.md) — file này chỉ nói phần riêng của repo.
+Repo này là marketplace + code plugin. Luật gốc của workspace nằm ở `AGENTS.md` của thư mục workbench (ngoài repo) — file này chỉ nói phần riêng của repo.
 
 ## Việc thuộc repo này
 
@@ -29,7 +29,7 @@ Hostname/mật khẩu/`machines.yml` (nằm ngoài repo), bản clone repo ngư�
 1. Copy `packages/_template` → `packages/dsh-<nhóm>-hg`.
 2. Đổi `name`, `description`, `dsh.market`, title/description trong `locale/*.json`, sửa `icon.svg`.
 3. Thêm 1 row vào `cordis.patch.yml` + 1 file source; cập nhật `docs/FEATURES.md`.
-4. Thêm dòng vào [docs/TRACKING.md](docs/TRACKING.md) và [../research/GROUPS.md](../research/GROUPS.md).
+4. Thêm dòng vào [docs/TRACKING.md](docs/TRACKING.md) và `research/GROUPS.md` (ngoài repo).
 5. Đảm bảo `engines.dsh` đúng với bản DSH đang chạy.
 
 ## Khi release
@@ -43,7 +43,7 @@ Hostname/mật khẩu/`machines.yml` (nằm ngoài repo), bản clone repo ngư�
 
 ## Kiểm tra trước khi báo xong
 
-Chạy đủ [Definition of Done](../../AGENTS.md#definition-of-done-báo-xong-chỉ-khi-đủ) ở AGENTS gốc, cộng thêm:
+Chạy đủ mục **Definition of Done** trong `AGENTS.md` của workbench (ngoài repo), cộng thêm:
 
 - [ ] `node scripts/build-index.mjs --check` không báo lệch.
 - [ ] `node packages/<pkg>/test/smoke.mjs` pass (nếu package có test).
