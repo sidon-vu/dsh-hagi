@@ -42,30 +42,26 @@ const exists = (target) => {
 }
 
 /**
- * Đọc các `- id:` của một patch YAML. Parser phẳng, có chủ ý: chỉ lấy id ở
- * indent nông nhất và `disabled:` đi kèm; `disabled:` lồng trong `config` bị bỏ qua.
+ * Đọc các `- id:` của một patch YAML. Parser phẳng, có chủ ý: giữ mọi id (kể cả
+ * id nằm trong `- insert:`), chỉ gắn `disabled:` nằm ngay dưới chính entry đó;
+ * `disabled:` lồng trong `config` bị bỏ qua.
  * @returns {Map<string, boolean|null>} id → disabled (null = bật tường minh)
  */
 export function parsePatch(text) {
   const entries = new Map()
   if (typeof text !== 'string') return entries
   const lines = text.split(/\r?\n/)
-  const ids = []
   for (const line of lines) {
-    const match = /^(\s*)-\s+id:\s*['"]?([\w.@/-]+)['"]?\s*$/.exec(line)
-    if (match !== null) ids.push({ indent: match[1].length, id: match[2] })
+    const match = /^\s*-\s+id:\s*['"]?([\w.@/-]+)['"]?\s*$/.exec(line)
+    if (match !== null && !entries.has(match[1])) entries.set(match[1], null)
   }
-  if (ids.length === 0) return entries
-  const top = Math.min(...ids.map((entry) => entry.indent))
-  const kept = ids.filter((entry) => entry.indent === top).map((entry) => entry.id)
-  for (const id of kept) if (!entries.has(id)) entries.set(id, null)
 
   let current
   let indent = -1
   for (const line of lines) {
     const open = /^(\s*)-\s+id:\s+['"]?([\w.@/-]+)['"]?\s*$/.exec(line)
     if (open !== null) {
-      current = open[1].length === top ? open[2] : undefined
+      current = open[2]
       indent = open[1].length
       continue
     }
@@ -187,7 +183,7 @@ export function doctor(options) {
   for (const [rowId, wanted] of desired) {
     if (wanted === true) continue
     // Hai nguồn độc lập: patch của máy nói gì, và DSH có nạp entry hay không.
-    if (state.disabled.get(rowId) === true) add('row-disabled', rowId, 'patch của máy đang tắt row này')
+    if (state.disabled.get(rowId) === true) add('row-disabled', rowId, 'một lớp patch trên máy đang tắt row này')
     if (!known.has(rowId)) add('row-unknown', rowId, 'không patch nào trên máy khai row này')
     else if (live !== undefined && !live.has(rowId)) add('row-not-live', rowId, 'row có khai nhưng DSH không nạp entry nào')
   }

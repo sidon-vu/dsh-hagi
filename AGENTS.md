@@ -4,6 +4,12 @@ Repo này là marketplace + code plugin. Luật gốc của workspace nằm ở 
 
 **Trước khi sửa:** đọc [HANDOFF.md](HANDOFF.md) — biết version đang phát hành, việc kế tiếp, nợ kỹ thuật. Cập nhật nó khi release hoặc khi để lại việc dở.
 
+## Ngân sách context
+
+- Đọc `HANDOFF.md` + `docs/TRACKING.md`, rồi mở **đúng** file cần; không glob/duyệt cả repo.
+- `read` (có `offset`/`limit`) thay cho `Get-Content`/`cat`; không grep trong `app.asar` của DSH.
+- Việc dự kiến quá ~15 lần gọi tool: chia bước, báo cáo giữa chừng để người dùng quyết.
+
 ## Việc thuộc repo này
 
 - `packages/` — code plugin (package = 1 nhóm chủ đề, row = 1 tính năng).

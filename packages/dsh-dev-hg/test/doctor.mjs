@@ -73,7 +73,9 @@ try {
 
   // --- parser patch ---
   const parsed = parsePatch(fs.readFileSync(desired, 'utf8'))
-  equal('parse: id nông nhất', [...parsed.keys()], ['row-alive', 'row-off', 'row-ghost', 'row-unknown', 'row-shared'])
+  equal('parse: giữ mọi id', [...parsed.keys()], ['row-alive', 'row-off', 'row-ghost', 'row-unknown', 'row-shared'])
+  equal('parse: id trong insert vẫn giữ', [...parsePatch('- insert:\n    - id: a\n      disabled: true\n').keys()], ['a'])
+  equal('parse: insert gắn đúng disabled', parsePatch('- insert:\n    - id: a\n      disabled: true\n').get('a'), true)
   equal('parse: row bật = null', parsed.get('row-alive'), null)
   equal('parse: disabled lồng trong config không thắng', parsed.get('row-unknown'), null)
   equal('parse: disabled: true', parsePatch('- id: a\n  disabled: true\n').get('a'), true)

@@ -20,6 +20,16 @@ Chỉ dẫn cụ thể hơn thắng: `AGENTS.md` của project > file này. Khô
 - Sửa đúng phạm vi được yêu cầu; cần đụng file ngoài phạm vi thì nói trước khi đụng.
 - Báo "xong" phải kèm bằng chứng; không có bằng chứng thì nói là chưa kiểm.
 
+## Ngân sách context
+
+Phiên dài đắt hơn nhiều so với việc đọc thêm một file ngắn — nhưng khám phá lan man thì đắt hơn cả hai.
+
+- Bắt đầu từ `AGENTS.md` rồi `HANDOFF.md` của project; chỉ mở thêm file mà công việc thực sự cần.
+- Đọc file dài bằng `read` với `offset`/`limit`. **Không** dùng `Get-Content`/`cat` qua shell để đọc file — shell không được theo dõi thay đổi file chỉ dẫn, và output khó giới hạn.
+- **Không** grep hay duyệt bên trong `app.asar` của DSH; đọc trực tiếp file đã biết đường dẫn.
+- Một việc dự kiến quá ~15 lần gọi tool: chia bước và báo cáo giữa chừng, đừng làm liền một mạch tới khi hết context.
+- Trước khi kết thúc: cập nhật `HANDOFF.md` để phiên sau không phải đọc lại hội thoại.
+
 ## Luật cá nhân đang nằm ở đâu
 
 Mỗi công cụ AI đọc một file khác nhau — đừng chép nội dung giữa chúng, sửa file của đúng công cụ.
