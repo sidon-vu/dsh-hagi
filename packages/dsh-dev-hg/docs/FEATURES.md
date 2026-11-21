@@ -8,7 +8,7 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 | `dev-hg-i18n-audit` | Tool `i18n_audit`: quét plugin đã cài — thiếu `locale/`, thiếu `vi.json`, CJK cứng, CJK trong README | done (0.2.0) | Tool hiện trong phiên mới; quét profile thật ra ≥1 plugin; output đúng schema; `node test/smoke.mjs` pass | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
 | `dev-hg-guard` | Khoá mỗi tool call: chặn đường dẫn bảo vệ, lệnh phá huỷ, secret trong nội dung/lệnh | done (0.3.0) | `node test/guard.mjs` pass; bật bằng patch máy thì câu ghi vào `research/inbox` bị từ chối kèm lý do | **Mặc định tắt** trong package: ảnh hưởng mọi lời gọi tool |
 | `dev-hg-boot` | Row rỗng giữ bundle cài được | dropped (0.2.0) | — | Xoá khi có tính năng thật |
-| `dev-hg-doctor` | So desired state (`workbench/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | planned | Chạy trên 1 máy thật, báo đúng ≥1 lệch đã biết; không ghi gì ngoài báo cáo | Đọc `pluginManager.listBundles` nếu có |
+| `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`workbench/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | wip | `node test/doctor.mjs` pass; chạy trên profile thật báo đúng lệch đã biết; `verify:release` + boot `lab` sạch; không ghi file | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
 | `dev-hg-snapshot` | Export/import profile (patch + bundle list), không kèm credentials | planned | Export → xoá patch → import → profile chạy lại; file không chứa secret (grep) | |
 | `dev-hg-rollback` | Snapshot trước khi apply, rollback một bước | planned | Apply thay đổi → rollback → trạng thái cũ; có test | Phụ thuộc snapshot |
 
@@ -37,6 +37,23 @@ Mỗi entry đường dẫn có thể là chuỗi glob, hoặc `{ pattern, allow
 
 Giới hạn đã biết: chỉ thấy **tool call** (không thấy shell lồng nhau), không chặn được người dùng tự gõ lệnh, và **fail-open** khi guard lỗi nội bộ (có `console.warn`) để không chặn cả phiên. Dùng `disabled: true` để tắt hẳn.
 
+## Hợp đồng của `dev-hg-doctor`
+
+Tool name: `profile_doctor`. Chỉ đọc: **không ghi file, không sửa patch, không đổi state**. Trả về danh sách lệch để agent tự quyết.
+
+| Tham số | Kiểu | Việc |
+|---|---|---|
+| `profile` | string tuỳ chọn | Thư mục profile cần soi; mặc định `DSH_PROFILE_DIR` |
+| `desired` | string tuỳ chọn | Patch mong muốn (`workbench/profiles/<máy>/cordis.patch.yml`); không có thì chỉ kiểm cấu trúc |
+| `includeUndeclared` | boolean tuỳ chọn | Kể cả row đang sống mà không patch máy nào khai (ồn hơn) |
+| `limit` | integer 1–200, mặc định 50 | Cắt số finding, lệch trước thông tin |
+
+`kind` có thể trả: `profile-missing`, `desired-missing`, `link-missing` (đích `link:`/`file:` không tồn tại), `bundle-missing` (khai mà không dùng được), `bundle-error`, `version-incompatible`, `version-mismatch`, `row-disabled` (patch máy đang tắt row mà desired bật), `row-not-live` (khai nhưng DSH không nạp entry), `row-unknown` (không patch nào trên máy khai), `row-undeclared` (severity `info`).
+
+Nguồn dữ liệu: đĩa (manifest profile, `node_modules`, các lớp patch) là **đủ để chạy**; `ctx.pluginManager.listBundles()` là nguồn phán quyết của chính DSH (`availability`, `error`, `entryId`) và **không nằm trong `inject`** — thiếu service thì row vẫn activate, chỉ mất phần kiểm row sống. Dùng `disabled: true` để tắt hẳn.
+
+Giới hạn đã biết: parser patch là phẳng (chỉ `id` + `disabled` của entry, bỏ `disabled:` lồng trong `config`); không tự suy ra "đúng patch nào cho máy nào" nên phải truyền `desired`; nó báo lệch, không sửa.
+
 ## Ngoại lệ i18n (đang nợ)
 
 Luật: chữ người dùng nhìn thấy phải qua `locale/*.json`. Hiện **hai chỗ chưa theo**, đã ghi nhận thay vì giả vờ đúng:
@@ -44,6 +61,7 @@ Luật: chữ người dùng nhìn thấy phải qua `locale/*.json`. Hiện **h
 | Chỗ | Chữ gì | Vì sao chưa nối | Trả nợ khi |
 |---|---|---|---|
 | `src/tool.js:84–97` | Bảng kết quả render (tiêu đề cột, verdict) | Host-side render hiện dựng chuỗi trực tiếp, `locale/*.json` mới chỉ có `meta.*` | làm row UI đầu tiên (khi có `ctx.locale` dùng được) |
+| `src/doctor-tool.js:102–112` | Tiêu đề + dòng finding của `profile_doctor` | cùng lý do | như trên |
 | `src/audit.js:164,181` | Verdict `no-locale`/`no-vi` và nhãn tiếng Việt | là dữ liệu máy đọc, chỉ render mới cần dịch | như trên |
 
 Chữ dành cho model (tool description, mô tả tham số, thông báo lỗi) **cố định tiếng Anh** — không phải nợ.
@@ -54,4 +72,5 @@ Chữ dành cho model (tool description, mô tả tham số, thông báo lỗi) 
 - Tool definition là **object thuần** cho `ctx.tools.register()`, không import `defineTool` từ `@deepseek-ai/dsh-tools`: package cài từ git không resolve được package của DSH. Tự validate tham số trong `execute`.
 - **Output schema phải là JSON Schema chuẩn**: `required` là **mảng tên field** ở cấp object. Viết `required: true` trên từng property (dialect của `defineTool`) thì DSH từ chối đăng ký và row **không activate** — đúng lỗi đã xảy ra ở 0.2.0, sửa ở 0.3.1.
 - Chuỗi hiển thị: thêm key vào `locale/en.json` và `locale/vi.json` cùng lúc.
-- Test: `node test/smoke.mjs` (không cần thư viện; kiểm cả schema output).
+- Test: `node test/smoke.mjs` (i18n_audit), `node test/doctor.mjs` (profile_doctor) — không cần thư viện; kiểm cả schema output.
+- Row đọc máy thì tách đôi như i18n: logic thuần ở `src/doctor.js` (test được bằng fixture), entry/tool ở `src/doctor-tool.js`. Service của DSH lấy qua `ctx` chứ không import.

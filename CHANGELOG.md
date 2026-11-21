@@ -3,6 +3,27 @@
 Định dạng theo [Keep a Changelog](https://keepachangelog.com/), version SemVer **theo từng package**.
 Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` là hệ quả của mục mới nhất, không phải nguồn.
 
+## dsh-dev-hg 0.4.0 — 2026-11-21
+
+Tag `dsh-dev-hg/v0.4.0`
+
+### Added
+- Row `dev-hg-doctor` + tool `profile_doctor`: so trạng thái mong muốn của máy (patch trong `workbench/profiles/<máy>/`) với trạng thái thật — `link:`/`file:` gãy, dependency khai mà không dùng được, bundle DSH từ chối, version lệch, row bị tắt nhầm, row không còn ai khai. Chỉ đọc.
+- `src/doctor.js` (logic thuần), `src/doctor-tool.js` (entry + tool), `test/doctor.mjs` (30+ assertion, mỗi loại lệch một ca).
+- Dùng `ctx.pluginManager.listBundles()` khi có (`availability`, `error`, `entryId`) nhưng **không** đưa vào `inject`: thiếu service thì row vẫn activate và lùi về đọc đĩa.
+
+### Verified
+- `node test/doctor.mjs` pass (`ok: doctor — 30+ assertion, tất cả pass`); `test/smoke.mjs`, `test/guard.mjs` vẫn pass.
+- Chạy trên máy thật (profile `desktop`, `desired` = `workbench/profiles/_example/cordis.patch.yml`): 2 lệch đúng — `row-unknown` cho `dev-hg-guard`, `dev-hg-doctor` (bản cài trên desktop còn 0.1.0, không khai hai row này).
+- `pnpm check:docs` pass; `dsh --profile lab --dump-config` ghép row `dev-hg-doctor` trỏ `src/doctor-tool.js`.
+- Boot `lab`: có URL, **0** `did not activate`.
+- `verify:release`: 3/3 package cài từ GitHub ok.
+
+### Known limits
+- Chưa gọi `profile_doctor` trong một phiên chat thật (mới chứng minh register + boot + chạy CLI trên profile thật).
+- Parsing patch là phẳng: chỉ `id` + `disabled` của entry, bỏ `disabled:` lồng trong `config`; không tự suy ra patch nào thuộc máy nào nên phải truyền `desired`.
+- Render của tool còn tiếng Việt cứng (nợ i18n, xem `docs/FEATURES.md`).
+
 ## [Unreleased]
 
 ### Added
@@ -27,7 +48,7 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 - `AGENTS.md`: thêm Definition of Done + bước CHANGELOG trong release.
 
 ### Planned
-- `dsh-dev-hg`: `dev-hg-doctor`, `dev-hg-snapshot`, `dev-hg-rollback`
+- `dsh-dev-hg`: `dev-hg-snapshot`, `dev-hg-rollback`
 - `dsh-session-hg`: `session-hg-context-panel`, `session-hg-archive`, `session-hg-rewind`
 - `dsh-ui-hg`: `ui-hg-statusbar`, `ui-hg-locale-switch`, `ui-hg-density`
 

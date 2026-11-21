@@ -13,6 +13,11 @@
       name: './src/guard.js'
       disabled: true
 
+    # Công cụ so trạng thái mong muốn (patch của máy) với máy: bundle thiếu, link
+    # gãy, version lệch, row bị tắt nhầm. Chỉ đọc nên bật mặc định.
+    - id: dev-hg-doctor
+      name: './src/doctor-tool.js'
+
     # --- thêm tính năng mới theo mẫu ---
     # - id: dev-hg-<tên-tính-năng>
     #   name: './src/<file>.js'
