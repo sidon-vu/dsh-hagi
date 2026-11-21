@@ -16,6 +16,11 @@
           "vi": "Phát triển & Vận hành"
         }
       },
+      "integration": {
+        "title": {
+          "en": "integration"
+        }
+      },
       "session": {
         "title": {
           "en": "Sessions & Messages",
@@ -64,6 +69,47 @@
             "url": "https://github.com/sidon-vu/dsh-hagi",
             "commit": "cfb17df44bf7b6e58c33a64a35aac3d37957b9f5",
             "path": "packages/dsh-dev-hg"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.5 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "dsh-machines-hg",
+      "title": "hg · Machines",
+      "description": "Pair DSH instances over SSH/Tailscale, pick an always-on host, dispatch and resume agent sessions across machines.",
+      "author": "HaGizen",
+      "repository": {
+        "url": "https://github.com/sidon-vu/dsh-hagi",
+        "directory": "packages/dsh-machines-hg"
+      },
+      "icon": "packages/dsh-machines-hg/icon.svg",
+      "metadata": {
+        "category": "integration",
+        "keywords": [
+          "dsh",
+          "machines",
+          "fleet",
+          "ssh",
+          "tailscale",
+          "remote",
+          "orchestration",
+          "multi-device"
+        ],
+        "labels": [],
+        "sortKeys": {}
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1795260989,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/sidon-vu/dsh-hagi",
+            "commit": "7f2bad6ea6642fdf8e394b46332a3c3755323ca5",
+            "path": "packages/dsh-machines-hg"
           },
           "engines": {
             "dsh": ">=0.2.2-rc.5 <0.3.0"
