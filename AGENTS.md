@@ -43,7 +43,7 @@ Hostname/mật khẩu/`machines.yml` (nằm ngoài repo), bản clone repo ngư�
 
 ## Kiểm tra trước khi báo xong
 
-Chạy đủ mục **Definition of Done** trong `AGENTS.md` của workbench (ngoài repo), cộng thêm:
+Chạy đủ mục **Definition of Done** trong `AGENTS.md` của workbench (ngoài repo). Chọn bộ kiểm theo bảng trong [docs/VERIFY.md](docs/VERIFY.md); tối thiểu:
 
 - [ ] `pnpm index:check` không báo lệch.
 - [ ] `pnpm check:docs` pass (≤ 200 dòng, không link gãy).
