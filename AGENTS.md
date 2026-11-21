@@ -35,14 +35,19 @@ Hostname/mật khẩu/`machines.yml` (nằm ngoài repo), bản clone repo ngư�
 ## Khi release
 
 1. `packages/<pkg>/docs/FEATURES.md`: trạng thái `done`.
-2. Bump `version` trong `packages/<pkg>/package.json` (semver thật, không `-rc` trừ khi cần).
-3. `git tag <pkg>/v<version>`.
-4. `node scripts/build-index.mjs` (script tự kiểm tra tag khớp version và validate).
-5. Commit `index.json`, push kèm tags.
+2. Thêm mục vào [CHANGELOG.md](CHANGELOG.md) dưới package đó: Added/Changed/Fixed/Verified/Known limits.
+3. Bump `version` trong `packages/<pkg>/package.json` (semver thật, không `-rc` trừ khi cần).
+4. `git tag <pkg>/v<version>`.
+5. `node scripts/build-index.mjs` (script tự kiểm tra tag khớp version và validate).
+6. Commit `index.json` + `CHANGELOG.md`, push kèm tags.
 
 ## Kiểm tra trước khi báo xong
 
+Chạy đủ [Definition of Done](../../AGENTS.md#definition-of-done-báo-xong-chỉ-khi-đủ) ở AGENTS gốc, cộng thêm:
+
 - [ ] `node scripts/build-index.mjs --check` không báo lệch.
+- [ ] `node packages/<pkg>/test/smoke.mjs` pass (nếu package có test).
 - [ ] Không có file `node_modules`/`dist` bất ngờ, không có secret trong diff.
-- [ ] `docs/TRACKING.md` và `docs/FEATURES.md` khớp thực tế.
+- [ ] `docs/TRACKING.md`, `docs/FEATURES.md`, `CHANGELOG.md` khớp thực tế.
 - [ ] Row id mới không trùng, đúng prefix nhóm.
+- [ ] Gặp sự cố vận hành: theo [docs/RUNBOOKS.md](docs/RUNBOOKS.md), không tự nghĩ quy trình mới.

@@ -29,6 +29,7 @@ Code ta viết mới trong `packages/<pkg>/src/`, tên file theo tính năng, kh
 ## Bước 3 — thiết kế row
 
 - Một tính năng = một row, id `<nhóm>-hg-<tính năng>`.
+- **Slice đầu tiên phải cài được và dùng được end-to-end** (dù chỉ một tính năng nhỏ) trước khi thêm tính năng thứ hai. Đừng gom 5 tính năng rồi mới thử.
 - `config` phẳng, nhỏ; mọi field đều có default trong code, vì patch máy khác thay thế wholesale.
 - Nếu tính năng cần bật/tắt theo máy → để mặc định trong patch package, override trong `workbench/profiles/<máy>/cordis.patch.yml`.
 
@@ -58,6 +59,21 @@ Apache-2.0: giữ nguyên `LICENSE` gốc + thêm ghi chú sửa đổi. MIT: gi
 2. Kiểm tra chuỗi: không còn tiếng Trung trong UI nếu đã dịch.
 3. Ghi vào `docs/FEATURES.md` + [TRACKING.md](TRACKING.md).
 4. Nếu phát hiện lỗi ở nguồn gốc: ghi vào `ANALYSIS.md`, không sửa trong `inbox/`.
+
+## Thăng cấp lab → desktop
+
+| Tầng | Profile | Được phép |
+|---|---|---|
+| Thử | `lab` (CLI, cài `link:`) | mọi thứ, kể cả plugin lạ chưa review |
+| Dùng thật | `desktop` (Electron quản lý) | chỉ bản đã release, pin commit |
+
+Checklist trước khi đưa lên `desktop`:
+
+- [ ] `node test/smoke.mjs` pass (hoặc bằng chứng chạy tương đương).
+- [ ] Đã cài thử bằng **spec pinned** (`git+…#<sha>&path:/packages/<pkg>`), không chỉ bằng `link:`.
+- [ ] `CHANGELOG.md` có mục cho version đó; tag đã tạo; `index.json` đã sinh lại.
+- [ ] Row còn thử nghiệm thì `disabled: true` trong patch của package.
+- [ ] Có đường rollback: ghi lại spec cũ trước khi cập nhật (xem [RUNBOOKS](RUNBOOKS.md) RB-2).
 
 ## Ưu tiên thực tế
 
