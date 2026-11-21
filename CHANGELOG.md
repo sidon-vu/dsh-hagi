@@ -45,6 +45,24 @@ Tag `dsh-dev-hg/v0.5.0`
 - `link:`/`file:` trong manifest giữ spec nguyên bản — import trên máy khác phải sửa spec trước khi `dsh plugin add`.
 - Chặn secret theo pattern mạnh nhưng không phải máy quét toàn diện; file nhạy cảm ở thư mục con (ngoài root) không được gói và cũng không được quét.
 
+## dsh-dev-hg 0.6.0 — 2026-11-21
+
+Tag `dsh-dev-hg/v0.6.0`
+
+### Added
+- Row `dev-hg-rollback` + tool `profile_rollback`: `save` chụp profile vào `rollback-history.json` trong profile (giữ tối đa `limit` snapshot, mặc định 5), `restore` đưa về snapshot gần nhất — **dry-run** trừ khi `confirm: true`, `clear` xoá history. Dùng lại `exportProfile`/`importProfile` của `dev-hg-snapshot` nên restore không chạy install — trả `needsInstall[]`.
+- `src/rollback.js` (logic thuần), `src/rollback-tool.js` (entry + tool), `test/rollback.mjs` (30+ assertion: checkpoint → đổi patch → dry-run → confirm → về trạng thái cũ → pop; limit cắt; format lạ → rỗng; schema đúng chuẩn).
+- `rollback-history.json` tự loại khỏi `files` của mỗi snapshot — nếu không, restore sẽ đè history hiện tại bằng bản cũ. Pop chỉ xảy ra sau khi ghi thành công.
+
+### Verified
+- `npm test` — 5 file pass (`smoke`/`guard`/`doctor`/`snapshot`/`rollback`).
+- Boot `lab`: `dsh web: http://127.0.0.1:52576/…` — **0** `did not activate`.
+- Lần boot đầu bắt được `JsonSchemaError: restored.type must be a single type string` (`['object','null']` không được hỗ trợ) — đã sửa thành `type:'object'`; test giờ check `typeof p.type === 'string'`.
+
+### Known limits
+- File tạo **sau** checkpoint không bị xoá khi restore (import chỉ ghi đè file có trong snapshot).
+- Render của `profile_rollback` còn tiếng Việt cứng (nợ i18n, xem `docs/FEATURES.md`).
+
 ## [Unreleased]
 
 ### Changed

@@ -7,7 +7,7 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`. Danh
 
 | Package | Version | Row | Tag |
 |---|---|---|---|
-| dsh-dev-hg | **0.5.0** | `dev-hg-i18n-audit`, `dev-hg-guard`, `dev-hg-doctor`, `dev-hg-snapshot` | `dsh-dev-hg/v0.5.0` |
+| dsh-dev-hg | **0.6.0** | `dev-hg-i18n-audit`, `dev-hg-guard`, `dev-hg-doctor`, `dev-hg-snapshot`, `dev-hg-rollback` | `dsh-dev-hg/v0.6.0` |
 | dsh-session-hg | 0.1.0 | `session-hg-boot` (skeleton) | `dsh-session-hg/v0.1.0` |
 | dsh-ui-hg | 0.1.0 | `ui-hg-boot` (skeleton) | `dsh-ui-hg/v0.1.0` |
 
@@ -15,13 +15,14 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`. Danh
 
 ## Việc kế tiếp trong repo
 
-1. **`dev-hg-rollback`** — snapshot trước khi apply, rollback một bước (sau `dev-hg-snapshot` đã xong ở 0.5.0). Done when: apply một thay đổi → rollback → trạng thái cũ; có test.
+1. **`dev-hg-rollback`** — ✅ released ở 0.6.0. Kế tiếp trong `dsh-dev-hg`: chưa chốt — có thể gọi `profile_rollback`/`guard`/`doctor` trong phiên chat thật để xác minh.
 2. Row UI đầu tiên ở `dsh-ui-hg` — đọc [DESIGN.md](packages/dsh-ui-hg/docs/DESIGN.md), phải thử trong `lab`.
 3. `dsh-session-hg` — row đầu tiên nên là `session-hg-context-panel`.
 
 ## Đang dở / nợ kỹ thuật
 
 - Guard và `profile_doctor` chưa được gọi trong phiên chat thật (mới unit test + boot `lab` + chạy CLI).
+- `dev-hg-rollback`: schema `type: ['object','null']` đã bị DSH từ chối (JsonSchemaError "must be a single type string") — đã sửa thành `type:'object'` + `restored:{}` khi không restore; test giờ check `typeof p.type === 'string'`. File mới tạo sau checkpoint không bị xoá khi restore (import chỉ ghi đè file trong snapshot) — đã ghi trong FEATURES.
 - Nợ i18n: text render trong `src/tool.js` và `src/doctor-tool.js` còn tiếng Việt cứng — xem mục "Ngoại lệ i18n" trong [FEATURES](packages/dsh-dev-hg/docs/FEATURES.md).
 - `packages/_template` cố tình không theo dõi trong [TRACKING](docs/TRACKING.md).
 

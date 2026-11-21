@@ -23,6 +23,11 @@
     - id: dev-hg-snapshot
       name: './src/snapshot-tool.js'
 
+    # Undo một bước cho profile: save checkpoint vào rollback-history.json,
+    # restore đưa về snapshot gần nhất (dry-run trừ khi confirm).
+    - id: dev-hg-rollback
+      name: './src/rollback-tool.js'
+
     # --- thêm tính năng mới theo mẫu ---
     # - id: dev-hg-<tên-tính-năng>
     #   name: './src/<file>.js'

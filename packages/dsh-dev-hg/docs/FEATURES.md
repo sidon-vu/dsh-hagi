@@ -10,7 +10,7 @@ Bảng tổng: [TRACKING.md](../../../docs/TRACKING.md). Kiến trúc: [ARCHITEC
 | `dev-hg-boot` | Row rỗng giữ bundle cài được | dropped (0.2.0) | — | Xoá khi có tính năng thật |
 | `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`control/profiles/<máy>/`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | `node test/doctor.mjs` pass; chạy trên profile thật báo đúng lệch đã biết; `verify:release` + boot `lab` sạch; không ghi file | Bật mặc định: chỉ đọc, thêm 1 tool vào phiên |
 | `dev-hg-snapshot` | Tool `profile_snapshot`: export/import profile (patch + bundle list), không kèm credentials | done (0.5.0) | `node test/snapshot.mjs` pass; export → xoá patch → import → file quay lại; manifest serialise không chứa `ghp_`/`sk-`; `verify:release` + boot `lab` sạch | Bật mặc định: export chỉ đọc, import bắt buộc `confirm` |
-| `dev-hg-rollback` | Snapshot trước khi apply, rollback một bước | planned | Apply thay đổi → rollback → trạng thái cũ; có test | Phụ thuộc snapshot |
+| `dev-hg-rollback` | Snapshot trước khi apply, rollback một bước | done (0.6.0) | Apply thay đổi → rollback → trạng thái cũ; có test | Phụ thuộc snapshot |
 
 ## Hợp đồng của `dev-hg-i18n-audit`
 
@@ -74,6 +74,28 @@ Tool name: `profile_snapshot`. Một file manifest JSON duy nhất — copy sang
 
 Giới hạn đã biết: spec `link:`/`file:` trong manifest trỏ đường dẫn tuyệt đối của máy gốc — import máy khác phải sửa lại spec trước khi `dsh plugin add`; không gói `node_modules` nên cài lại là bắt buộc; không gói file ẩn (`.credentials.yaml` bị loại theo luật tên nhạy cảm); chặn secret theo pattern mạnh nhưng không phải máy quét toàn diện — đừng gói profile có secret ở chỗ tool không nhìn (ví dụ trong `dsh` config lồng nhau không nằm mẫu quét).
 
+## Hợp đồng của `dev-hg-rollback`
+
+Tool name: `profile_rollback`. Undo một bước cho profile — history nằm ở
+`<profile>/rollback-history.json` (giữ tối đa `limit` snapshot, mặc định 5).
+
+| Tham số | Kiểu | Việc |
+|---|---|---|
+| `action` | `save` \| `restore` \| `clear` (bắt buộc) | save: chụp profile vào history (gọi TRƯỚC khi đổi). restore: về snapshot gần nhất. clear: xoá history. |
+| `profile` | string, tuỳ chọn | thư mục profile; mặc định `DSH_PROFILE_DIR` |
+| `limit` | integer 1–50, mặc định 5 | số snapshot tối đa giữ |
+| `confirm` | boolean, mặc định `false` | restore/clear: thật sự ghi; mặc định dry-run |
+
+- Snapshot dùng `exportProfile`/`importProfile` của `dev-hg-snapshot` → restore
+  **không chạy install**; `needsInstall[]` trả về để agent tự `dsh plugin add`.
+- `rollback-history.json` bị loại khỏi `files` của mỗi snapshot — nếu không,
+  restore sẽ đè history hiện tại bằng bản cũ.
+- Pop khỏi history chỉ xảy ra **sau** khi ghi thành công; file history hỏng
+  hoặc chứa snapshot `format` lạ → coi như rỗng, không restore nhầm.
+- File mới tạo sau checkpoint **không bị xoá** khi restore (import chỉ ghi đè
+  file trong snapshot) — giới hạn đã biết.
+- Bật mặc định: `save` chỉ ghi 1 file trong profile, `restore` bắt buộc `confirm`.
+
 ## Ngoại lệ i18n (đang nợ)
 
 Luật: chữ người dùng nhìn thấy phải qua `locale/*.json`. Hiện **hai chỗ chưa theo**, đã ghi nhận thay vì giả vờ đúng:
@@ -82,6 +104,7 @@ Luật: chữ người dùng nhìn thấy phải qua `locale/*.json`. Hiện **h
 |---|---|---|---|
 | `src/tool.js:84–97` | Bảng kết quả render (tiêu đề cột, verdict) | Host-side render hiện dựng chuỗi trực tiếp, `locale/*.json` mới chỉ có `meta.*` | làm row UI đầu tiên (khi có `ctx.locale` dùng được) |
 | `src/doctor-tool.js:102–112` | Tiêu đề + dòng finding của `profile_doctor` | cùng lý do | như trên |
+| `src/rollback-tool.js` render | Dòng kết quả `profile_rollback` | cùng lý do | như trên |
 | `src/audit.js:164,181` | Verdict `no-locale`/`no-vi` và nhãn tiếng Việt | là dữ liệu máy đọc, chỉ render mới cần dịch | như trên |
 
 Chữ dành cho model (tool description, mô tả tham số, thông báo lỗi) **cố định tiếng Anh** — không phải nợ.

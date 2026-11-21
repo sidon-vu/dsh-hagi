@@ -89,7 +89,15 @@ profile_snapshot({ action:'import', source:'lab.snapshot.json', target:'~/.dsh/p
 
 The manifest only carries what install needs — after import you still `dsh plugin --profile lab add <spec>` for each entry in `needsInstall`.
 
-Planned rows: `dev-hg-rollback` (undo one step).
+### `profile_rollback` — undo one step
+
+Row `dev-hg-rollback`. Call `save` **before** applying a change; `restore` puts the profile back to the most recent checkpoint. Restore is dry-run unless `confirm` is passed. History lives in `rollback-history.json` inside the profile (keeps up to `limit` snapshots, default 5). Files created after the checkpoint are not deleted — restore only overwrites what the snapshot carries.
+
+```powershell
+profile_rollback({ action:'save' })                       # before editing the profile
+profile_rollback({ action:'restore' })                    # dry-run: lists what would change
+profile_rollback({ action:'restore', confirm:true })      # actually restore
+```
 
 ## Requirements
 
@@ -108,9 +116,12 @@ dsh-dev-hg/
 ├─ src/doctor-tool.js  # plugin entry: registers the profile_doctor tool
 ├─ src/snapshot.js     # pure pack/unpack logic (profile_snapshot)
 ├─ src/snapshot-tool.js # plugin entry: registers the profile_snapshot tool
+├─ src/rollback.js     # pure checkpoint/restore logic (profile_rollback)
+├─ src/rollback-tool.js # plugin entry: registers the profile_rollback tool
 ├─ test/smoke.mjs      # node test/smoke.mjs — no framework
 ├─ test/doctor.mjs     # node test/doctor.mjs — no framework
 ├─ test/snapshot.mjs   # node test/snapshot.mjs — no framework
+├─ test/rollback.mjs   # node test/rollback.mjs — no framework
 ├─ locale/en.json      # display strings
 ├─ locale/vi.json
 └─ docs/FEATURES.md
@@ -126,6 +137,8 @@ In your profile patch — the package stays installed, the tool disappears:
 - id: dev-hg-doctor
   disabled: true
 - id: dev-hg-snapshot
+  disabled: true
+- id: dev-hg-rollback
   disabled: true
 ```
 

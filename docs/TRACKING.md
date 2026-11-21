@@ -9,7 +9,7 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 
 | Package | Nhóm | Version | Giai đoạn | Row | Reference chính |
 |---|---|---|---|---|---|
-| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.5.0 | released — [AGENTS](../packages/dsh-dev-hg/AGENTS.md) | 4 tính năng | `research/REFERENCES.md` |
+| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.6.0 | released — [AGENTS](../packages/dsh-dev-hg/AGENTS.md) | 5 tính năng | `research/REFERENCES.md` |
 | [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton — [AGENTS](../packages/dsh-session-hg/AGENTS.md) | 1 row rỗng | `research/REFERENCES.md` |
 | [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton — [AGENTS](../packages/dsh-ui-hg/AGENTS.md) | 1 row rỗng | `research/REFERENCES.md` |
 
@@ -28,7 +28,7 @@ Danh sách plugin theo chủ đề (kèm mục đích từng cái): [../PLUGINS.
 | `dev-hg-guard` | Khoá mỗi tool call: đường dẫn bảo vệ, lệnh phá huỷ, secret — config-driven | done (0.3.0) | mặc định tắt, bật ở `control/profiles/<máy>/` |
 | `dev-hg-doctor` | Tool `profile_doctor`: so desired state (`control/profiles/*`) với máy: bundle thiếu, link gãy, version lệch, row tắt nhầm | done (0.4.0) | thay script rời |
 | `dev-hg-snapshot` | Tool `profile_snapshot`: export/import profile (patch + bundle list), không kèm credentials | done (0.5.0) | manifest không chứa secret; import dry-run mặc định |
-| `dev-hg-rollback` | Snapshot trước khi apply, rollback 1 nút | planned | sau snapshot |
+| `dev-hg-rollback` | Tool `profile_rollback`: checkpoint → restore snapshot gần nhất (undo 1 bước) | done (0.6.0) | history `rollback-history.json`, restore dry-run mặc định |
 
 ### dsh-session-hg — Session & Context
 

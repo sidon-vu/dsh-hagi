@@ -1,6 +1,6 @@
 # dsh-dev-hg — trạng thái phát triển
 
-Giai đoạn: **released** · version 0.5.0 · cập nhật 2026-11-21
+Giai đoạn: **released** · version 0.6.0 · cập nhật 2026-11-21
 Công cụ phát triển/vận hành cho DSH. Mô tả công khai: [README.md](README.md).
 
 File này **không** nằm trong `files` của package → không phát hành cho người dùng, chỉ dùng khi phát triển.
@@ -13,11 +13,11 @@ File này **không** nằm trong `files` của package → không phát hành ch
 | `dev-hg-guard` | done (0.3.0) | mặc định **tắt**, bật bằng patch profile |
 | `dev-hg-doctor` | done (0.4.0) | tool `profile_doctor` |
 | `dev-hg-snapshot` | done (0.5.0) | export/import profile, không kèm credentials |
-| `dev-hg-rollback` | planned | chi tiết + done-when: [docs/FEATURES.md](docs/FEATURES.md) |
+| `dev-hg-rollback` | done (0.6.0) | tool `profile_rollback`; undo 1 bước qua `rollback-history.json` |
 
 ## Đang làm / kế tiếp
 
-- Kế tiếp: **`dev-hg-rollback`** (thứ tự chốt ở [../../HANDOFF.md](../../HANDOFF.md)).
+- Kế tiếp: chưa chốt (xem [../../HANDOFF.md](../../HANDOFF.md)).
 - Chặn: `guard`, `doctor` chưa được gọi trong phiên chat thật (mới unit test + boot `lab`).
 
 ## Luật riêng của package
