@@ -26,6 +26,21 @@ Mỗi mục ghi tên package + version + commit/tag tương ứng. `index.json` 
 - `dsh-session-hg`: `session-hg-context-panel`, `session-hg-archive`, `session-hg-rewind`
 - `dsh-ui-hg`: `ui-hg-statusbar`, `ui-hg-locale-switch`, `ui-hg-density`
 
+## dsh-dev-hg 0.3.1 — 2026-11-21
+
+Tag `dsh-dev-hg/v0.3.1`
+
+### Fixed
+- **`i18n_audit` chưa bao giờ activate trong DSH** (từ 0.2.0): output schema dùng `required: true` trên từng property — đó là dialect của `defineTool`, còn đăng ký trực tiếp cần mảng `required: [...]` chuẩn JSON Schema. DSH từ chối: *"unsupported JSON schema … required is not supported on type string"*.
+- `test/smoke.mjs` đã chấp nhận chính dialect sai đó nên không bắt được. Nay kiểm theo chuẩn **và** có assertion cấm `required: true` trên property.
+
+### Verified
+- Profile `lab` boot trước khi sửa: `dsh: warning: 1 entry did not activate (dev-hg-i18n-audit …)`.
+- Sau khi sửa: boot lại không còn cảnh báo; cả 2 row (`i18n-audit`, `guard`) activate.
+
+### Known limits
+- `pnpm verify:release` **không** bắt được lớp lỗi này: nó thay `ctx.tools.register` bằng hàm giả nên bỏ qua bước validate schema của DSH. Chỉ mount thật trong `lab` mới lộ.
+
 ## dsh-dev-hg 0.3.0 — 2026-11-21
 
 Tag `dsh-dev-hg/v0.3.0`

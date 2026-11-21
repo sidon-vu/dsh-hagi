@@ -36,41 +36,48 @@ const PARAMETERS = {
   },
 }
 
+/**
+ * Output schema là **JSON Schema chuẩn**: `required` phải là mảng tên field ở cấp
+ * object, KHÔNG dùng `required: true` trên từng property (đó là dialect của
+ * `defineTool`, mà package cài từ git không import được). Dùng sai → row không
+ * activate: "unsupported JSON schema: schema.properties.x.required is not supported".
+ */
 const OUTPUT_SCHEMA = {
   type: 'object',
   additionalProperties: false,
+  required: ['scope', 'scanned', 'summary', 'packages', 'truncated'],
   properties: {
-    scope: { type: 'string', required: true, description: 'Profile directory or absolute target that was scanned.' },
-    scanned: { type: 'integer', required: true, description: 'Number of plugin packages audited.' },
+    scope: { type: 'string', description: 'Profile directory or absolute target that was scanned.' },
+    scanned: { type: 'integer', description: 'Number of plugin packages audited.' },
     summary: {
       type: 'object',
       additionalProperties: false,
-      required: true,
+      required: ['missingLocale', 'missingVi', 'hasVi'],
       properties: {
-        missingLocale: { type: 'integer', required: true, description: 'Packages with no locale files at all.' },
-        missingVi: { type: 'integer', required: true, description: 'Packages with locale files but no vi.json.' },
-        hasVi: { type: 'integer', required: true, description: 'Packages that already ship vi.json.' },
+        missingLocale: { type: 'integer', description: 'Packages with no locale files at all.' },
+        missingVi: { type: 'integer', description: 'Packages with locale files but no vi.json.' },
+        hasVi: { type: 'integer', description: 'Packages that already ship vi.json.' },
       },
     },
     packages: {
       type: 'array',
-      required: true,
       items: {
         type: 'object',
         additionalProperties: false,
+        required: ['name', 'version', 'verdict', 'locales', 'cjkLines', 'cjkFiles', 'readmeCjkPercent', 'hasClient'],
         properties: {
-          name: { type: 'string', required: true },
-          version: { type: 'string', required: true },
-          verdict: { type: 'string', required: true },
-          locales: { type: 'array', required: true, items: { type: 'string' } },
-          cjkLines: { type: 'integer', required: true, description: 'Non-comment lines containing CJK characters.' },
-          cjkFiles: { type: 'integer', required: true },
-          readmeCjkPercent: { type: 'integer', required: true },
-          hasClient: { type: 'boolean', required: true, description: 'True when the package renders UI (dsh.client).' },
+          name: { type: 'string' },
+          version: { type: 'string' },
+          verdict: { type: 'string' },
+          locales: { type: 'array', items: { type: 'string' } },
+          cjkLines: { type: 'integer', description: 'Non-comment lines containing CJK characters.' },
+          cjkFiles: { type: 'integer' },
+          readmeCjkPercent: { type: 'integer' },
+          hasClient: { type: 'boolean', description: 'True when the package renders UI (dsh.client).' },
         },
       },
     },
-    truncated: { type: 'boolean', required: true, description: 'True when some packages are not listed; narrow with target or raise limit.' },
+    truncated: { type: 'boolean', description: 'True when some packages are not listed; narrow with target or raise limit.' },
   },
 }
 

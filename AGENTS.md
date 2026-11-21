@@ -48,6 +48,7 @@ Chạy đủ mục **Definition of Done** trong `AGENTS.md` của workbench (ngo
 - [ ] `pnpm index:check` không báo lệch.
 - [ ] `pnpm check:docs` pass (≤ 200 dòng, không link gãy).
 - [ ] `pnpm verify:release` pass (cài được từ GitHub + row resolve được).
+- [ ] **Mount thật trong `lab`** (bắt buộc với row đăng ký tool/slot/service): `dsh --profile lab --no-open --port 0` rồi xác nhận **không** có `warning: … entry did not activate`. `verify:release` không thay được bước này vì nó dùng `ctx` giả.
 - [ ] `node packages/<pkg>/test/smoke.mjs` pass (nếu package có test).
 - [ ] Không có file `node_modules`/`dist` bất ngờ, không có secret trong diff.
 - [ ] `docs/TRACKING.md`, `docs/FEATURES.md`, `CHANGELOG.md` khớp thực tế.

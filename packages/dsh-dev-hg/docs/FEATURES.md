@@ -52,5 +52,6 @@ Chữ dành cho model (tool description, mô tả tham số, thông báo lỗi) 
 
 - **Một tính năng = một row.** Không gộp, không dùng `config.features.*` (config bị thay thế wholesale).
 - Tool definition là **object thuần** cho `ctx.tools.register()`, không import `defineTool` từ `@deepseek-ai/dsh-tools`: package cài từ git không resolve được package của DSH. Tự validate tham số trong `execute`.
+- **Output schema phải là JSON Schema chuẩn**: `required` là **mảng tên field** ở cấp object. Viết `required: true` trên từng property (dialect của `defineTool`) thì DSH từ chối đăng ký và row **không activate** — đúng lỗi đã xảy ra ở 0.2.0, sửa ở 0.3.1.
 - Chuỗi hiển thị: thêm key vào `locale/en.json` và `locale/vi.json` cùng lúc.
 - Test: `node test/smoke.mjs` (không cần thư viện; kiểm cả schema output).

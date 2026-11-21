@@ -9,7 +9,7 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 
 | Package | Nhóm | Version | Trạng thái | Reference chính |
 |---|---|---|---|---|
-| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.3.0 | 2 tính năng | `research/REFERENCES.md` |
+| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.3.1 | 2 tính năng | `research/REFERENCES.md` |
 | [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton | `research/REFERENCES.md` |
 | [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton | `research/REFERENCES.md` |
 

@@ -37,8 +37,8 @@ const schemaProblems = (schema, value, at = '$') => {
     case 'object': {
       if (value === null || typeof value !== 'object' || Array.isArray(value)) return [`${at} not object`]
       const props = schema.properties ?? {}
-      for (const key of Object.keys(props)) {
-        if (props[key].required === true && !(key in value)) problems.push(`${at}.${key} missing`)
+      for (const key of Array.isArray(schema.required) ? schema.required : []) {
+        if (!(key in value)) problems.push(`${at}.${key} missing`)
       }
       if (schema.additionalProperties === false) {
         for (const key of Object.keys(value)) if (!(key in props)) problems.push(`${at}.${key} unexpected`)
@@ -146,6 +146,22 @@ try {
 
   const value = await def.execute({ target: noLocale }, {})
   equal('schema violations', schemaProblems(def.output.schema, value), [])
+
+  // Chống tái phát: `required: true` trên property là dialect của defineTool, KHÔNG
+  // phải JSON Schema chuẩn. Dùng sai thì DSH từ chối activate row (đã xảy ra ở 0.2.0).
+  const perPropertyRequired = []
+  const walkSchema = (node, at = '$') => {
+    if (node === null || typeof node !== 'object') return
+    if (node.properties) {
+      for (const [key, child] of Object.entries(node.properties)) {
+        if (child && child.required === true) perPropertyRequired.push(`${at}.${key}`)
+        walkSchema(child, `${at}.${key}`)
+      }
+    }
+    if (node.items) walkSchema(node.items, `${at}[]`)
+  }
+  walkSchema(def.output.schema)
+  equal('output schema không dùng required:true trên property', perPropertyRequired, [])
 
   const text = def.output.render({}, value)[0].text
   check('render có tên package', text.includes('dsh-no-locale'), text.slice(0, 120))
