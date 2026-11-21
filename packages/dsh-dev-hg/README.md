@@ -6,24 +6,36 @@ Part of [dsh-hagi](../../README.md), group `dev`. One package = one theme; insid
 
 ## Install
 
-```
-plugins → Discover → (add index source) → hg · Dev & Ops
-```
+From the marketplace: **Plugins → Discover → hg · Dev & Ops → Install**.
 
-or
+Or:
 
 ```powershell
-dsh plugin --profile <profile> add "dsh-dev-hg"
+dsh plugin --profile <profile> add "github:sidon-vu/dsh-hagi#dsh-dev-hg/v0.2.0&path:/packages/dsh-dev-hg"
 ```
 
 ## Features
 
-- `dev-hg-i18n-audit` — Quét plugin đang cài: chuỗi CJK cứng, thiếu `locale/vi.json`, xuất báo cáo
-- `dev-hg-doctor` — So desired state với máy: bundle thiếu, link gãy, version lệch
-- `dev-hg-snapshot` — Export/import profile (patch + bundle list), không kèm credentials
-- `dev-hg-rollback` — Snapshot trước khi apply, rollback một bước
+### `i18n_audit` — localization coverage audit (0.2.0)
 
-Full status table: [docs/FEATURES.md](docs/FEATURES.md).
+A read-only agent tool. It scans plugin packages and reports, worst first:
+
+- packages with **no `locale/` files at all** (strings hardcoded),
+- packages with locales but **no `vi.json`**,
+- how many **non-comment source lines contain CJK characters**, and how much of the README is CJK,
+- whether the package renders UI (`dsh.client`).
+
+Parameters: `target` (optional absolute directory — one package, or a folder containing `packages/*`), `limit` (1–100, default 20). Without `target` it audits the plugins installed in the running profile.
+
+```text
+plugin@version              verdict          cjk lines  locales
+dsh-config-manager@0.10.0   không có locale  71944      —
+dsh-context@0.86.0 (UI)     thiếu vi         1453       de,en,es,fr,ja,pt,ru,zh
+```
+
+Full status table and design notes: [docs/FEATURES.md](docs/FEATURES.md).
+
+Planned rows: `dev-hg-doctor` (desired state vs machine), `dev-hg-snapshot`, `dev-hg-rollback`.
 
 ## Requirements
 
@@ -36,10 +48,21 @@ Full status table: [docs/FEATURES.md](docs/FEATURES.md).
 dsh-dev-hg/
 ├─ package.json        # name, engines.dsh, dsh.bundle, dsh.market
 ├─ cordis.patch.yml    # rows (features)
-├─ index.js            # host entry
+├─ src/audit.js        # pure scanning logic
+├─ src/tool.js         # plugin entry: registers the i18n_audit tool
+├─ test/smoke.mjs      # node test/smoke.mjs — no framework
 ├─ locale/en.json      # display strings
 ├─ locale/vi.json
 └─ docs/FEATURES.md
+```
+
+## Switch it off
+
+In your profile patch — the package stays installed, the tool disappears:
+
+```yaml
+- id: dev-hg-i18n-audit
+  disabled: true
 ```
 
 ## License
