@@ -48,6 +48,10 @@ Tag `dsh-dev-hg/v0.5.0`
 ## [Unreleased]
 
 ### Added
+- `PLUGINS.md`: danh sách plugin theo chủ đề, mục đích, package, giai đoạn — tầng "biết có gì" trước khi vào chi tiết.
+- `packages/<pkg>/AGENTS.md` cho cả 3 package: giai đoạn, row, việc kế tiếp, chặn, luật riêng. Không nằm trong `files` nên không phát hành.
+- `workbench/rules/`: quy trình dùng chung có lịch sử — `context-budget.md`, `sessions.md` (vùng sở hữu + chống xung đột), `process-changes.md` (cách áp một quy trình mới).
+- Mục "Phiên theo plugin (chống xung đột)" trong `AGENTS.md`; cột **Giai đoạn** trong `docs/TRACKING.md`.
 - Mục **Ngân sách context** trong luật user-level (`workbench/user/AGENTS.user.md`) và trong `AGENTS.md` của repo: đọc `read` thay `Get-Content`, không grep trong `app.asar`, chia việc > ~15 tool call.
 - `HANDOFF.md` (repo): version đang phát hành, việc kế tiếp, nợ kỹ thuật, nhịp release — để phiên mới biết dừng ở đâu mà không cần đọc lại hội thoại cũ.
 - `workbench/user/skills/`: hai skill học từ lỗi thật, bản chuẩn có lịch sử (`dsh-plain-tool-definition`, `foreign-repo-quarantine`); cài vào `~/.dsh/skills/` để DSH tự nạp.

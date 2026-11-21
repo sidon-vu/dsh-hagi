@@ -30,6 +30,13 @@ Phiên dài đắt hơn nhiều so với việc đọc thêm một file ngắn �
 - Một việc dự kiến quá ~15 lần gọi tool: chia bước và báo cáo giữa chừng, đừng làm liền một mạch tới khi hết context.
 - Trước khi kết thúc: cập nhật `HANDOFF.md` để phiên sau không phải đọc lại hội thoại.
 
+## Bản đồ quy trình
+
+Quy trình dùng chung nằm trong repo (bản chuẩn, có lịch sử):
+`D:\DEV\dsh-workbench\dsh-hagi\workbench\rules\README.md`
+
+Đọc khi cần, không đọc hết: `context-budget.md` (giữ phiên không phình) · `sessions.md` (nhiều phiên, chống xung đột) · `process-changes.md` (áp một quy trình mới vào đâu).
+
 ## Luật cá nhân đang nằm ở đâu
 
 Mỗi công cụ AI đọc một file khác nhau — đừng chép nội dung giữa chúng, sửa file của đúng công cụ.

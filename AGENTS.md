@@ -10,6 +10,13 @@ Repo này là marketplace + code plugin. Luật gốc của workspace nằm ở 
 - `read` (có `offset`/`limit`) thay cho `Get-Content`/`cat`; không grep trong `app.asar` của DSH.
 - Việc dự kiến quá ~15 lần gọi tool: chia bước, báo cáo giữa chừng để người dùng quyết.
 
+## Phiên theo plugin (chống xung đột)
+
+- Mở phiên ở repo: đọc [PLUGINS.md](PLUGINS.md) để biết có plugin nào, giai đoạn nào, rồi đi tiếp vào package.
+- Làm một plugin: đọc `packages/<pkg>/AGENTS.md` của **đúng** plugin đó. Không sửa package khác trong cùng phiên.
+- Một phiên = một plugin. File dùng chung (`HANDOFF.md`, `CHANGELOG.md`, `index.json`, `docs/TRACKING.md`) chỉ sửa lúc kết phiên/release và **commit ngay**.
+- Vùng sở hữu và cách xử lý khi sắp xung đột: [workbench/rules/sessions.md](workbench/rules/sessions.md).
+
 ## Việc thuộc repo này
 
 - `packages/` — code plugin (package = 1 nhóm chủ đề, row = 1 tính năng).

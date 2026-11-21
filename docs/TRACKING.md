@@ -7,11 +7,13 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 
 ## Theo package
 
-| Package | Nhóm | Version | Trạng thái | Reference chính |
-|---|---|---|---|---|
-| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.5.0 | 4 tính năng | `research/REFERENCES.md` |
-| [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton | `research/REFERENCES.md` |
-| [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton | `research/REFERENCES.md` |
+| Package | Nhóm | Version | Giai đoạn | Row | Reference chính |
+|---|---|---|---|---|---|
+| [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.5.0 | released — [AGENTS](../packages/dsh-dev-hg/AGENTS.md) | 4 tính năng | `research/REFERENCES.md` |
+| [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton — [AGENTS](../packages/dsh-session-hg/AGENTS.md) | 1 row rỗng | `research/REFERENCES.md` |
+| [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton — [AGENTS](../packages/dsh-ui-hg/AGENTS.md) | 1 row rỗng | `research/REFERENCES.md` |
+
+Danh sách plugin theo chủ đề (kèm mục đích từng cái): [../PLUGINS.md](../PLUGINS.md).
 
 `packages/_template` **cố tình không có dòng ở đây**: nó không phát hành, chỉ là bản mẫu để copy. Row `template-hg-boot` trong patch của nó tồn tại để bundle mẫu hợp lệ.
 
