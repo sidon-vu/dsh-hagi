@@ -12,7 +12,7 @@ File này **không** nằm trong `files` của package → không phát hành ch
 | `machines-hg-boot` | done | skeleton, xoá khi có row thật |
 | `machines-hg-registry` | done | **enabled** — `machine_list` verify trong lab chat (list đúng vhagi) |
 | `machines-hg-pin` | done | **enabled** — `machine_pin vhagi` verify trong lab chat (pin + status đúng) |
-| `machines-hg-dispatch` | done | **enabled** — e2e vHaGi `DISPATCH_OK` + resume `turn:2`; chat verify: SSH→headless OK, chỉ lỗi quota API trên vHaGi |
+| `machines-hg-dispatch` | done | **enabled** — e2e `DISPATCH_OK` + resume; chat verify: wHaGi→vHaGi `cx-devin` trả `4` đúng |
 | `machines-hg-tunnel` | done | **enabled** — cloudflared spawn + `trycloudflare.com` parse verify 2026-11-21 |
 | `machines-hg-handoff` | done | **enabled** — `machine_sessions` scan `~/.dsh/sessions` vHaGi (5 sorted mtime) + `machine_attach` |
 | `machines-hg-a2a` | wip | P4: `test/a2a-e2e.mjs` pass (card + ListTasks + GetTask/-32001 + outbound connect); `disabled:true` — SSH loopback executor chỉ chạy trên máy có `sshd` local |

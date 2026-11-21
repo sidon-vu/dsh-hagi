@@ -57,7 +57,7 @@ Danh sách plugin theo chủ đề (kèm mục đích từng cái): [../PLUGINS.
 | `machines-hg-registry` | Bảng `machines` (id, endpoint, tokenEnv, tags) + `machine_add`/`machine_list`/`machine_remove`/`machine_probe` | done | verify trong lab chat |
 | `machines-hg-status` | Probe `/api/status` hoặc agent-card của từng máy | planned | `dph-fleet` `fleet_status` |
 | `machines-hg-pin` | Binding `sessionId → machineId`; resolve `args.host → pin → default → local` | done | verify trong lab chat |
-| `machines-hg-dispatch` | `machine_dispatch(machine?, prompt)` qua SSH + `dsh headless` | done | transport verify; chờ vHaGi nạp credit để e2e chat đầy đủ |
+| `machines-hg-dispatch` | `machine_dispatch(machine?, prompt)` qua SSH + `dsh headless` | done | e2e wHaGi→vHaGi `cx-devin` verify |
 | `machines-hg-handoff` | `machine_sessions(machine)` list session remote + attach URL | planned | `dsh-api-session-controller` |
 | `machines-hg-tunnel` | Spawn/monitor cloudflared (quick/named), lưu public URL | planned | `dsh-gateway-agent` pattern |
 | `machines-hg-a2a` | A2A v1.0.1 viết lại: inbound `/a2a/<machineId>` + outbound `a2a__<m>__<skill>` tools | dropped | executor cần `dsh` headless — chỉ có trên desktop, không có trên vHaGi |
