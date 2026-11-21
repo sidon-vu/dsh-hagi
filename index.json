@@ -1,0 +1,149 @@
+{
+  "format": 1,
+  "title": {
+    "en": "hg plugins for DeepSeek Harness",
+    "vi": "Plugin hg cho DeepSeek Harness"
+  },
+  "description": {
+    "en": "Personal collection of DeepSeek Harness plugins: dev/ops tooling, session insight and interface additions.",
+    "vi": "Bộ plugin DeepSeek Harness cá nhân: công cụ dev/ops, hiểu phiên làm việc và bổ sung giao diện."
+  },
+  "metadata": {
+    "categories": {
+      "dev": {
+        "title": {
+          "en": "Development & Operations",
+          "vi": "Phát triển & Vận hành"
+        }
+      },
+      "session": {
+        "title": {
+          "en": "Sessions & Messages",
+          "vi": "Phiên & Tin nhắn"
+        }
+      },
+      "interface": {
+        "title": {
+          "en": "UI & Experience",
+          "vi": "Giao diện & Trải nghiệm"
+        }
+      }
+    },
+    "labels": {},
+    "sortKeys": {}
+  },
+  "plugins": [
+    {
+      "name": "dsh-dev-hg",
+      "title": "hg · Dev & Ops",
+      "description": "Development and operations for DeepSeek Harness: audit installed plugins, check profile health, snapshot and roll back changes.",
+      "author": "HaGizen",
+      "repository": {
+        "url": "https://github.com/OWNER/dsh-hagi",
+        "directory": "packages/dsh-dev-hg"
+      },
+      "icon": "packages/dsh-dev-hg/icon.svg",
+      "metadata": {
+        "category": "dev",
+        "keywords": [
+          "dsh",
+          "dev",
+          "ops",
+          "profile",
+          "i18n"
+        ],
+        "labels": [],
+        "sortKeys": {}
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1795229210,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/OWNER/dsh-hagi",
+            "commit": "4e2c6fd897ddb5a9dd4ee46fe22a2afe30fa907a",
+            "path": "packages/dsh-dev-hg"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.5 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "dsh-session-hg",
+      "title": "hg · Session & Context",
+      "description": "Session and context tooling for DeepSeek Harness: inspect context usage, archive and rewind sessions.",
+      "author": "HaGizen",
+      "repository": {
+        "url": "https://github.com/OWNER/dsh-hagi",
+        "directory": "packages/dsh-session-hg"
+      },
+      "icon": "packages/dsh-session-hg/icon.svg",
+      "metadata": {
+        "category": "session",
+        "keywords": [
+          "dsh",
+          "session",
+          "context",
+          "archive"
+        ],
+        "labels": [],
+        "sortKeys": {}
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1795229210,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/OWNER/dsh-hagi",
+            "commit": "4e2c6fd897ddb5a9dd4ee46fe22a2afe30fa907a",
+            "path": "packages/dsh-session-hg"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.5 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "dsh-ui-hg",
+      "title": "hg · UI & Experience",
+      "description": "Interface additions for DeepSeek Harness: a multi-machine status bar, a language switch for hg plugins, and display density.",
+      "author": "HaGizen",
+      "repository": {
+        "url": "https://github.com/OWNER/dsh-hagi",
+        "directory": "packages/dsh-ui-hg"
+      },
+      "icon": "packages/dsh-ui-hg/icon.svg",
+      "metadata": {
+        "category": "interface",
+        "keywords": [
+          "dsh",
+          "ui",
+          "statusbar",
+          "i18n"
+        ],
+        "labels": [],
+        "sortKeys": {}
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1795229210,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/OWNER/dsh-hagi",
+            "commit": "4e2c6fd897ddb5a9dd4ee46fe22a2afe30fa907a",
+            "path": "packages/dsh-ui-hg"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.5 <0.3.0"
+          }
+        }
+      ]
+    }
+  ]
+}
