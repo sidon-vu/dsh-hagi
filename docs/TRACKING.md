@@ -12,7 +12,7 @@ Row id là hợp đồng vĩnh viễn — chỉ thêm, không đổi tên.
 | [dsh-dev-hg](../packages/dsh-dev-hg/README.md) | dev | 0.6.0 | released — [AGENTS](../packages/dsh-dev-hg/AGENTS.md) | 5 tính năng | `research/REFERENCES.md` |
 | [dsh-session-hg](../packages/dsh-session-hg/README.md) | session | 0.1.0 | skeleton — [AGENTS](../packages/dsh-session-hg/AGENTS.md) | 1 row rỗng | `research/REFERENCES.md` |
 | [dsh-ui-hg](../packages/dsh-ui-hg/README.md) | interface | 0.1.0 | skeleton — [AGENTS](../packages/dsh-ui-hg/AGENTS.md) | 1 row rỗng | `research/REFERENCES.md` |
-| [dsh-machines-hg](../packages/dsh-machines-hg/README.md) | machines | 0.1.0 | skeleton — [AGENTS](../packages/dsh-machines-hg/AGENTS.md) | 1 row rỗng | `dsh-fleet`, `dph-fleet`, `dsh-plugin-ssh` |
+| [dsh-machines-hg](../packages/dsh-machines-hg/README.md) | machines | 0.1.0 | released — [AGENTS](../packages/dsh-machines-hg/AGENTS.md) | 6 row enabled, 1 disabled | `dsh-fleet`, `dph-fleet`, `dsh-plugin-ssh` |
 
 Danh sách plugin theo chủ đề (kèm mục đích từng cái): [../PLUGINS.md](../PLUGINS.md).
 
@@ -54,13 +54,13 @@ Danh sách plugin theo chủ đề (kèm mục đích từng cái): [../PLUGINS.
 | Row id | Tính năng | Trạng thái | Ghi chú |
 |---|---|---|---|
 | `machines-hg-boot` | Row rỗng giữ bundle cài được | done | xoá khi có tính năng thật |
-| `machines-hg-registry` | Bảng `machines` (id, endpoint, tokenEnv, tags) + `machine_add`/`machine_list`/`machine_remove`/`machine_probe` | wip | code + smoke PASS; chờ verify tool trong phiên lab |
+| `machines-hg-registry` | Bảng `machines` (id, endpoint, tokenEnv, tags) + `machine_add`/`machine_list`/`machine_remove`/`machine_probe` | done | verify trong lab chat |
 | `machines-hg-status` | Probe `/api/status` hoặc agent-card của từng máy | planned | `dph-fleet` `fleet_status` |
-| `machines-hg-pin` | Binding `sessionId → machineId`; resolve `args.host → pin → default → local` | planned | thiết kế riêng |
+| `machines-hg-pin` | Binding `sessionId → machineId`; resolve `args.host → pin → default → local` | done | verify trong lab chat |
 | `machines-hg-dispatch` | `machine_dispatch(machine?, prompt)` qua DSH remote API (Typert) | planned | `dsh-api-session-controller` |
 | `machines-hg-handoff` | `machine_sessions(machine)` list session remote + attach URL | planned | `dsh-api-session-controller` |
 | `machines-hg-tunnel` | Spawn/monitor cloudflared (quick/named), lưu public URL | planned | `dsh-gateway-agent` pattern |
-| `machines-hg-a2a` | A2A v1.0.1 viết lại: inbound `/a2a/<machineId>` + outbound `a2a__<m>__<skill>` tools | planned | `@hanphone/dsh-a2a` v0.5.5 |
+| `machines-hg-a2a` | A2A v1.0.1 viết lại: inbound `/a2a/<machineId>` + outbound `a2a__<m>__<skill>` tools | dropped | executor cần `dsh` headless — chỉ có trên desktop, không có trên vHaGi |
 
 ## Quy tắc cập nhật
 

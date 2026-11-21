@@ -10,7 +10,7 @@ Phạm vi rộng hơn (máy, profile, việc ngoài repo): `../HANDOFF.md`. Danh
 | dsh-dev-hg | **0.6.0** | `dev-hg-i18n-audit`, `dev-hg-guard`, `dev-hg-doctor`, `dev-hg-snapshot`, `dev-hg-rollback` | `dsh-dev-hg/v0.6.0` |
 | dsh-session-hg | 0.1.0 | `session-hg-boot` (skeleton) | `dsh-session-hg/v0.1.0` |
 | dsh-ui-hg | 0.1.0 | `ui-hg-boot` (skeleton) | `dsh-ui-hg/v0.1.0` |
-| dsh-machines-hg | 0.1.0 | `machines-hg-boot`, `machines-hg-registry`, `machines-hg-pin`, `machines-hg-dispatch`, `machines-hg-tunnel`, `machines-hg-handoff`, `machines-hg-a2a` | chưa tag |
+| dsh-machines-hg | **0.1.0** | `machines-hg-boot`, `machines-hg-registry`, `machines-hg-pin`, `machines-hg-dispatch`, `machines-hg-tunnel`, `machines-hg-handoff`, `machines-hg-a2a` | `dsh-machines-hg/v0.1.0` |
 
 `index.json` sinh từ tag, không sửa tay. URL live: `https://raw.githubusercontent.com/sidon-vu/dsh-hagi/main/index.json`
 
