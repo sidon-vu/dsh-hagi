@@ -10,7 +10,7 @@
 node scripts/build-index.mjs                 # sinh index.json
 node scripts/build-index.mjs --check        # chỉ kiểm: lệch thì exit 1 (dùng trước khi push)
 node scripts/build-index.mjs --local        # cho phép package chưa có tag (dùng commit HEAD) — chỉ khi thử
-node scripts/build-index.mjs --repo-url=https://github.com/OWNER/dsh-hagi
+node scripts/build-index.mjs --repo-url=https://github.com/sidon-vu/dsh-hagi
 ```
 
 ## Nó kiểm gì

@@ -1,11 +1,11 @@
 # Patch mẫu cho một máy. Copy thành workbench/profiles/<máy>/cordis.patch.yml
 # rồi chép nội dung vào ~/.dsh/profiles/<profile>/cordis.patch.yml (thêm ở cuối file).
 
-# 1) Marketplace của chính repo này (thay OWNER sau khi push GitHub)
+# 1) Marketplace của chính repo này (index của marketplace)
 - id: plugin-market
   config:
     indexes:
-      - https://raw.githubusercontent.com/OWNER/dsh-hagi/main/index.json
+      - https://raw.githubusercontent.com/sidon-vu/dsh-hagi/main/index.json
 
 # 2) Tính năng bật/tắt theo máy
 #    Row id lấy từ docs/TRACKING.md. disabled: true = tắt, null = theo mặc định package.

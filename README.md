@@ -22,7 +22,7 @@ Once this repo is public, add one index source in DSH:
 **Plugins → Discover → Add index source** →
 
 ```
-https://raw.githubusercontent.com/OWNER/dsh-hagi/main/index.json
+https://raw.githubusercontent.com/sidon-vu/dsh-hagi/main/index.json
 ```
 
 Then install any listed plugin with one click. Each entry pins a git commit, so installs are reproducible.
@@ -30,7 +30,7 @@ Then install any listed plugin with one click. Each entry pins a git commit, so 
 Install manually instead:
 
 ```powershell
-dsh plugin --profile <profile> add "github:OWNER/dsh-hagi#<package>/v<version>&path:/packages/<package>"
+dsh plugin --profile <profile> add "github:sidon-vu/dsh-hagi#<package>/v<version>&path:/packages/<package>"
 ```
 
 ## Layout
