@@ -18,9 +18,15 @@ dsh plugin --profile <profile> add "dsh-machines-hg"
 
 ## Features
 
-- `machines-hg-boot` — skeleton row keeping the bundle installable (removed once a real feature lands)
+- `machines-hg-registry` — register machines (id, baseUrl, SSH/Tailscale endpoint), probe alive
+- `machines-hg-pin` — pin a session to a machine so `machine_dispatch` runs there
+- `machines-hg-dispatch` — send a prompt to a remote machine via SSH + `dsh headless`
+- `machines-hg-tunnel` — Cloudflare quick tunnel for machines without public IP
+- `machines-hg-handoff` — list remote sessions, get attach URL for phone/tablet
 
 Full status table: [docs/FEATURES.md](docs/FEATURES.md).
+
+**How to use:** [docs/USAGE.md](docs/USAGE.md) — pair machines, configure headless Ubuntu, dispatch prompts, attach from phone.
 
 ## Requirements
 
