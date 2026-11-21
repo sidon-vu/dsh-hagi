@@ -10,7 +10,7 @@
 | Luật user-level + skill của ta | — | `user/` |
 | Quy trình dùng chung | — | `rules/` |
 
-Tên cũ của thư mục này là `workbench/`, đã đổi thành `control/` vì trùng tên với thư mục ngoài.
+Tên cũ của thư mục này là `control/`, đã đổi thành `control/` vì trùng tên với thư mục ngoài.
 
 ## Cấu trúc
 

@@ -48,7 +48,7 @@ Tag `dsh-dev-hg/v0.5.0`
 ## [Unreleased]
 
 ### Changed
-- Đổi tên `workbench/` → `control/` (trong repo) vì trùng tên với thư mục làm việc `dsh-workbench/`. Không đổi nội dung, chỉ đổi đường dẫn; 21 file được cập nhật tham chiếu, `control/README.md` giải thích rõ hai thư mục.
+- Đổi tên `control/` → `control/` (trong repo) vì trùng tên với thư mục làm việc `dsh-workbench/`. Không đổi nội dung, chỉ đổi đường dẫn; 21 file được cập nhật tham chiếu, `control/README.md` giải thích rõ hai thư mục.
 
 ### Added
 - `PLUGINS.md`: danh sách plugin theo chủ đề, mục đích, package, giai đoạn — tầng "biết có gì" trước khi vào chi tiết.
