@@ -51,6 +51,7 @@ Tag `dsh-dev-hg/v0.5.0`
 - Đổi tên `control/` → `control/` (trong repo) vì trùng tên với thư mục làm việc `dsh-workbench/`. Không đổi nội dung, chỉ đổi đường dẫn; 21 file được cập nhật tham chiếu, `control/README.md` giải thích rõ hai thư mục.
 
 ### Added
+- `control/sources/`: lưu **nguyên văn** ba tài liệu đã đưa để áp dụng (6 file vibe coding, pstack/Lauren Tan, audit luật + hook) kèm bảng "đã áp dụng / không áp dụng" và lý do. Trước đó chỉ có kết quả, không có nguồn.
 - `PLUGINS.md`: danh sách plugin theo chủ đề, mục đích, package, giai đoạn — tầng "biết có gì" trước khi vào chi tiết.
 - `packages/<pkg>/AGENTS.md` cho cả 3 package: giai đoạn, row, việc kế tiếp, chặn, luật riêng. Không nằm trong `files` nên không phát hành.
 - `control/rules/`: quy trình dùng chung có lịch sử — `context-budget.md`, `sessions.md` (vùng sở hữu + chống xung đột), `process-changes.md` (cách áp một quy trình mới).

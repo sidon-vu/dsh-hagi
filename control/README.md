@@ -22,7 +22,8 @@ control/
 ├─ user/
 │  ├─ AGENTS.user.md              # bản chuẩn của ~/.dsh/AGENTS.md
 │  └─ skills/<tên>/SKILL.md       # bản chuẩn của ~/.dsh/skills/<tên>/
-└─ rules/                         # quy trình dùng chung (context, phiên, áp quy trình)
+├─ rules/                         # quy trình dùng chung (context, phiên, áp quy trình)
+└─ sources/                       # văn bản gốc đã đưa để áp dụng (nguyên văn + đã/không áp dụng)
 ```
 
 `rules/README.md` là cửa vào quy trình. `user/` là bản chuẩn copy ra home; file trong repo **không tự nạp** — cố ý đặt tên `AGENTS.user.md` để DSH không nạp nhầm nó như chỉ dẫn của repo.

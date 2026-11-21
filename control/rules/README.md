@@ -10,6 +10,7 @@
 | [../../docs/VERIFY.md](../../docs/VERIFY.md) | Cần bằng chứng gì cho loại thay đổi này? | trước khi báo xong |
 | [../../docs/PORTING.md](../../docs/PORTING.md) | Port plugin lạ thế nào? | khi phân tích repo tham khảo |
 | [../../docs/RUNBOOKS.md](../../docs/RUNBOOKS.md) | Có sự cố vận hành? | khi DSH hỏng, cần rollback |
+| [../sources/README.md](../sources/README.md) | Tài liệu dán vào đã được lưu ở đâu? | trước khi áp dụng một tài liệu mới |
 
 ## Vì sao nằm trong `dsh-hagi`
 
